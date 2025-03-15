@@ -56,27 +56,27 @@ const BestSellers = () => {
                     }}
                     modules={[FreeMode]}
                 >
-                    {filterProduct.map(({ id, imgae, image2, title }) => {
+                    {filterProduct.map(({ id, image, image2, title }) => {
                         return (
                             <SwiperSlide
                                 key={id}
                                 className="select-none w-full group"
                             >
                                 <div className="border relative overflow-hidden cursor-pointer">
-                                    <Link to={"/products/catagory/title"}>
+                                    <Link to={`/shop/${title}`}>
                                         <img
                                             className="w-full h-auto"
-                                            src={image2}
+                                            src={image}
                                             alt=""
                                         />
                                     </Link>
                                     <Link
-                                        to={`/products/catagory/${title}`}
+                                        to={`/shop/${title}`}
                                         className="absolute group-hover:opacity-0 group-hover:invisible top-0 left-0 right-0 bottom-0 opacity-100 visible duration-300 transition-all block"
                                     >
                                         <img
                                             className="w-full h-auto"
-                                            src={imgae}
+                                            src={image2}
                                             alt=""
                                         />
                                     </Link>

@@ -39,31 +39,10 @@ const NavBar = () => {
                                     </Link>
                                 );
                             })}
-                        {/* <Link to={"/products/all-mockups"}>
-                            <AnimatedTitle text={"all mockups"} />
-                        </Link>
-                        <Link to={"/products/billboards"}>
-                            <AnimatedTitle text={"billboards"} />
-                        </Link>
-                        <Link to={"/products/posters"}>
-                            <AnimatedTitle text={"posters"} />
-                        </Link>
-                        <Link to={"/products/signs"}>
-                            <AnimatedTitle text={"signs"} />
-                        </Link>
-                        <Link to={"/products/pylons"}>
-                            <AnimatedTitle text={"pylons"} />
-                        </Link>
-                        <Link to={"/products/facades"}>
-                            <AnimatedTitle text={"facades"} />
-                        </Link>
-                        <Link to={"/products/bus-stops"}>
-                            <AnimatedTitle text={"bus stops"} />
-                        </Link> */}
                     </div>
                     {/* account and cart */}
                     <div className="flex gap-6 lg:gap-8 w-full lg:w-[15%] items-center justify-end leading-none">
-                        <Link className="hidden lg:block">
+                        <Link to={'/account'} className="hidden lg:block">
                             <AnimatedTitle text={"account"} />
                         </Link>
                         <div>
@@ -122,7 +101,7 @@ const NavBar = () => {
                         })}
                     <Link
                         onClick={() => setmenu(false)}
-                        to={"/products/account"}
+                        to={"/account"}
                         className="block pb-2"
                     >
                         <AnimatedTitle text={"account"} />

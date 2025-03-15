@@ -9,6 +9,7 @@ import Details from "./Pages/Details";
 import Footer from "./Components/Common/Footer";
 import ScrollToTop from "./Components/Common/ScrollToTop";
 import CategoryPage from "./Pages/CategoryPage";
+import Account from "./Pages/Account";
 
 const App = () => {
     return (
@@ -22,11 +23,8 @@ const App = () => {
                     path="/product-category/:param"
                     element={<CategoryPage />}
                 />
-                {/* <Route path="/shop/:param" element={<Shop />} /> */}
-                <Route
-                    path="/shop/:title"
-                    element={<Details />}
-                />
+                <Route path="/account" element={<Account />} />
+                <Route path="/shop/:title" element={<Details />} />
             </Routes>
             <Footer />
         </>

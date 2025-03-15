@@ -35,7 +35,7 @@ const CategoryPage = () => {
             </h2>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-y-5 gap-x-2 sm:gap-[3vw] md:gap-[2vw] lg:gap-[1.5vw]">
                 {newCategoriesData &&
-                    newCategoriesData.map(({ id, title, image, image2,slug }) => {
+                    newCategoriesData.map(({ id, title, image, image2 }) => {
                         return (
                             <div key={id} className="select-none w-full group">
                                 <div className="border relative overflow-hidden cursor-pointer">
