@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AnimatedTitle from "./AnimatedTitle";
 import { Link } from "react-router-dom";
 import SideCart from "./SideCart";
+import { productContext } from "../../Utils/Context";
 
 const NavBar = () => {
+    const [mockupsApiData] = useContext(productContext);
+
     const [openCart, setopenCart] = useState(false);
     const [menu, setmenu] = useState(false);
     const menuFunction = () => {
@@ -28,7 +31,15 @@ const NavBar = () => {
                     </div>
                     {/* menu */}
                     <div className="gap-8 w-[70%] justify-center leading-none hidden lg:flex">
-                        <Link to={"/products/all-mockups"}>
+                        {mockupsApiData.categories &&
+                            mockupsApiData.categories.map(({ param,id }) => {
+                                return (
+                                    <Link key={id} to={`/product-category/${param}`}>
+                                        <AnimatedTitle text={param} />
+                                    </Link>
+                                );
+                            })}
+                        {/* <Link to={"/products/all-mockups"}>
                             <AnimatedTitle text={"all mockups"} />
                         </Link>
                         <Link to={"/products/billboards"}>
@@ -48,7 +59,7 @@ const NavBar = () => {
                         </Link>
                         <Link to={"/products/bus-stops"}>
                             <AnimatedTitle text={"bus stops"} />
-                        </Link>
+                        </Link> */}
                     </div>
                     {/* account and cart */}
                     <div className="flex gap-6 lg:gap-8 w-full lg:w-[15%] items-center justify-end leading-none">
@@ -97,7 +108,26 @@ const NavBar = () => {
                             : "translate-y-[20%] invisible opacity-0"
                     }`}
                 >
+                    {mockupsApiData.categories &&
+                        mockupsApiData.categories.map(({ param,id }) => {
+                            return (
+                                <Link key={id}
+                                    className="block border-b pb-4 pt-2 border-[#C5CACE]"
+                                    onClick={() => setmenu(false)}
+                                    to={`/product-category/${param}/`}
+                                >
+                                    <AnimatedTitle text={param} />
+                                </Link>
+                            );
+                        })}
                     <Link
+                        onClick={() => setmenu(false)}
+                        to={"/products/account"}
+                        className="block pb-2"
+                    >
+                        <AnimatedTitle text={"account"} />
+                    </Link>
+                    {/* <Link
                         onClick={() => setmenu(false)}
                         to={"/products/all-mockups"}
                         className="block border-b pb-4 pt-2 border-[#C5CACE]"
@@ -145,14 +175,14 @@ const NavBar = () => {
                         className="block pb-4 border-b border-[#C5CACE]"
                     >
                         <AnimatedTitle text={"bus stops"} />
-                    </Link>
-                    <Link
+                    </Link> */}
+                    {/* <Link
                         onClick={() => setmenu(false)}
                         to={"/products/account"}
                         className="block pb-2"
                     >
                         <AnimatedTitle text={"account"} />
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
             <SideCart openCart={openCart} setopenCart={setopenCart} />

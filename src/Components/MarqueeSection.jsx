@@ -25,7 +25,7 @@ const MarqueeSection = () => {
             tl.to(
                 floatingCard1.current,
                 {
-                    marginBottom: "-18vw",
+                    marginBottom: "-20vw",
                 },
                 "d"
             );

@@ -8,6 +8,7 @@ import Shop from "./Pages/Shop";
 import Details from "./Pages/Details";
 import Footer from "./Components/Common/Footer";
 import ScrollToTop from "./Components/Common/ScrollToTop";
+import CategoryPage from "./Pages/CategoryPage";
 
 const App = () => {
     return (
@@ -17,9 +18,13 @@ const App = () => {
             <NavBar />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/products/:param" element={<Shop />} />
                 <Route
-                    path="/products/:catagory/:param"
+                    path="/product-category/:param"
+                    element={<CategoryPage />}
+                />
+                {/* <Route path="/shop/:param" element={<Shop />} /> */}
+                <Route
+                    path="/shop/:title"
                     element={<Details />}
                 />
             </Routes>

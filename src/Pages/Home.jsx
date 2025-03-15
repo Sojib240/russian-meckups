@@ -10,6 +10,7 @@ import MarqueeSection from "../Components/MarqueeSection";
 const Home = () => {
     // const [mockupsApiData] = useContext(productContext);
     // console.log(mockupsApiData);
+    document.title="Russian Mockups"
 
     return (
         <div className="bg-[#D6DBE0] min-h-screen">

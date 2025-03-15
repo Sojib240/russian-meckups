@@ -12,7 +12,7 @@ const SideCart = ({ openCart, setopenCart }) => {
             ></div>
             <div
                 className={`w-full sm:w-[600px] h-screen fixed top-0 right-0 z-[999] bg-[#D6DBE0] transition-all ease-in-out duration-500 px-5 sm:px-7 pb-8 flex flex-col justify-between ${
-                    openCart ? "translate-x-0" : "translate-x-[100%]"
+                    openCart ? "translate-x-0 opacity-100" : "translate-x-[100%] opacity-0"
                 }`}
             >
                 <div className="flex justify-between items-center gap-[2vw] w-full mb-8 sm:mb-[2vw] sm:px-0 border-b py-3">

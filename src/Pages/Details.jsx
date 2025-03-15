@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 // swiper js
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
@@ -10,81 +10,129 @@ import "swiper/css/thumbs";
 // import required modules
 import { FreeMode } from "swiper/modules";
 import { Thumbs } from "swiper/modules";
+import { productContext } from "../Utils/Context";
 
 const Details = () => {
+    // document.title = productPageTitle;
+
+    const [productsApiData] = useContext(productContext);
+    //
+    //
+    const { title } = useParams();
+    const [singleProduct, setsingleProduct] = useState();
+    var productPageTitle;
+
+    const singleProductId = () => {
+        const product =
+            productsApiData.productsDetails &&
+            productsApiData.productsDetails.filter((prod) => {
+                return prod.title === title;
+            });
+        setsingleProduct(product);
+
+        product.map((p) => {
+            productPageTitle =
+                document.title = `${p.title.toUpperCase()} - Russian Mockups`;
+        });
+        
+    };
+
+    //
+
+    useEffect(() => {
+        if (productsApiData) {
+            singleProductId();
+        }
+    }, [productsApiData, title]);
+
+    //
+    //
     const [accordianOpen, setaccordianOpen] = useState(false);
     const [thumbsSwiper, setThumbsSwiper] = useState();
     return (
         <div className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] bg-[#D6DBE0]">
             <div className="flex flex-col lg:flex-row gap-[2vw] relative">
                 {/* pc */}
-                <div className="hidden lg:flex flex-col gap-3 w-full lg:w-[64%] 2xl:w-[68%] pt-24 lg:pt-[80px]">
-                    {" "}
-                    <img
-                        className="border"
-                        src="/Images/Products/MSC-020-1.jpg"
-                        alt=""
-                    />
-                    <img
-                        className="border"
-                        src="/Images/Products/MSC-020-2.jpg"
-                        alt=""
-                    />
-                </div>
+                {singleProduct &&
+                    singleProduct.map(({ id, image, image2 }) => {
+                        return (
+                            <div
+                                key={id}
+                                className="hidden lg:flex flex-col gap-3 w-full lg:w-[64%] 2xl:w-[68%] pt-24 lg:pt-[80px]"
+                            >
+                                <img className="border" src={image} alt="" />
+                                <img className="border" src={image2} alt="" />
+                            </div>
+                        );
+                    })}
                 {/* mobile */}
-                <div className="slider block lg:hidden relative mt-[80px]">
-                    <Swiper
-                        spaceBetween={0}
-                        slidesPerView={1}
-                        navigation={false}
-                        thumbs={{ swiper: thumbsSwiper }}
-                        modules={[Thumbs]}
-                        className="mySwiper2 border"
-                    >
-                        <SwiperSlide className="swiperslider w-full ">
-                            <img
-                                className="w-full h-full object-cover"
-                                src="/Images/Products/MSC-001-1.jpg"
-                            />
-                        </SwiperSlide>
-                        <SwiperSlide className="swiperslider w-full object-cover">
-                            <img
-                                className="w-full h-full"
-                                src="/Images/Products/MSC-001-2.jpg"
-                            />
-                        </SwiperSlide>
-                    </Swiper>
-                    <Swiper
-                        onSwiper={setThumbsSwiper}
-                        spaceBetween={10}
-                        slidesPerView={3}
-                        freeMode={true}
-                        direction={"horizontal"}
-                        height={"auto"}
-                        reverseDirection={true}
-                        watchSlidesProgress={true}
-                        modules={[Thumbs]}
-                        className="mySwiper cursor-pointer mt-[10px]"
-                    >
-                        <SwiperSlide className="SwiperSlideThumb border">
-                            <img
-                                className="w-full h-full object-cover"
-                                src="/Images/Products/MSC-001-1.jpg"
-                            />
-                        </SwiperSlide>
-                        <SwiperSlide className="SwiperSlideThumb border">
-                            <img
-                                className="w-full h-full object-cover"
-                                src="/Images/Products/MSC-001-2.jpg"
-                            />
-                        </SwiperSlide>
-                    </Swiper>
-                </div>
+                {singleProduct &&
+                    singleProduct.map(({id,image,image2}) => {
+                        return (
+                            <div key={id} className="slider block lg:hidden relative mt-[80px]">
+                                <Swiper
+                                    spaceBetween={0}
+                                    slidesPerView={1}
+                                    navigation={false}
+                                    thumbs={{ swiper: thumbsSwiper }}
+                                    modules={[Thumbs]}
+                                    className="mySwiper2 border"
+                                >
+                                    <SwiperSlide className="swiperslider w-full ">
+                                        <img
+                                            className="w-full h-full object-cover"
+                                            src={image}
+                                        />
+                                    </SwiperSlide>
+                                    <SwiperSlide className="swiperslider w-full object-cover">
+                                        <img
+                                            className="w-full h-full"
+                                            src={image2}
+                                        />
+                                    </SwiperSlide>
+                                </Swiper>
+                                <Swiper
+                                    onSwiper={setThumbsSwiper}
+                                    spaceBetween={10}
+                                    slidesPerView={3}
+                                    freeMode={true}
+                                    direction={"horizontal"}
+                                    height={"auto"}
+                                    reverseDirection={true}
+                                    watchSlidesProgress={true}
+                                    modules={[Thumbs]}
+                                    className="mySwiper cursor-pointer mt-[10px]"
+                                >
+                                    <SwiperSlide className="SwiperSlideThumb border">
+                                        <img
+                                            className="w-full h-full object-cover"
+                                            src={image}
+                                        />
+                                    </SwiperSlide>
+                                    <SwiperSlide className="SwiperSlideThumb border">
+                                        <img
+                                            className="w-full h-full object-cover"
+                                            src={image2}
+                                        />
+                                    </SwiperSlide>
+                                </Swiper>
+                            </div>
+                        );
+                    })}
                 {/*  */}
                 <div className="w-full lg:w-[36%] 2xl:w-[32%] px-0 lg:px-[1.5vw] min-h-[20vw] h-full sticky top-0 right-0 pt-6 lg:pt-[80px]">
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl 2xl:text-[80px] font-font5 tracking-[-2px] xl:tracking-[-3px] leading-none">
-                        MSC-021
-                    </h2>
+                    {singleProduct &&
+                        singleProduct.map(({ id, title }) => {
+                            return (
+                                <h2
+                                    key={id}
+                                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl 2xl:text-[80px] font-font5 tracking-[-2px] xl:tracking-[-3px] leading-none uppercase"
+                                >
+                                    {title}
+                                </h2>
+                            );
+                        })}
+
                     <p className="font-font3 text-sm sm:text-base mt-5">
                         Fully customizable and high quality poster mockup, ready
                         for your impressive design.
@@ -293,14 +341,14 @@ const Details = () => {
                                 <Link>
                                     <img
                                         className="w-full h-auto"
-                                        src="/Images/Products/MSC-001-2.jpg"
+                                        src='/Images/Products/MSC-037-1.jpg'
                                         alt=""
                                     />
                                 </Link>
                                 <Link className="absolute group-hover:opacity-0 group-hover:invisible top-0 left-0 right-0 bottom-0 opacity-100 visible duration-300 transition-all block">
                                     <img
                                         className="w-full h-auto"
-                                        src="/Images/Products/MSC-001-1.jpg"
+                                        src="/Images/Products/MSC-037-2.jpg"
                                         alt=""
                                     />
                                 </Link>
