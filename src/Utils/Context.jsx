@@ -10,43 +10,36 @@ const Context = (props) => {
                 id: 1,
                 categoryName: "all mockups",
                 param: "all-mockups",
-                // direction: `/product-category/all-mockups/`,
             },
             {
                 id: 2,
                 categoryName: "billboards",
                 param: "billboards",
-                // direction: `/product-category/billboards/`,
             },
             {
                 id: 3,
                 categoryName: "posters",
                 param: "posters",
-                // direction: `/product-category/posters/`,
             },
             {
                 id: 4,
                 categoryName: "signs",
                 param: "signs",
-                // direction: `/product-category/signs/`,
             },
             {
                 id: 5,
                 categoryName: "pylons",
                 param: "pylons",
-                // direction: `/product-category/facades/`,
             },
             {
                 id: 6,
                 categoryName: "facades",
                 param: "facades",
-                // direction: `/product-category/pylons/`,
             },
             {
                 id: 7,
                 categoryName: "bus stops",
                 param: "bus-stops",
-                // direction: `/product-category/bus-stops/`,
             },
         ],
         productsDetails: [

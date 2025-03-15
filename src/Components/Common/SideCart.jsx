@@ -11,7 +11,7 @@ const SideCart = ({ openCart, setopenCart }) => {
                 }`}
             ></div>
             <div
-                className={`w-full sm:w-[600px] h-screen fixed top-0 right-0 z-[999] bg-[#D6DBE0] transition-all ease-in-out duration-500 px-5 sm:px-7 pb-8 flex flex-col justify-between ${
+                className={`w-full sm:w-[600px] h-screen fixed top-0 right-0 z-[999] bg-[#D6DBE0] transition-all ease-in-out duration-500 px-5 origin-right-center sm:px-7 pb-8 flex flex-col justify-between ${
                     openCart ? "translate-x-0 opacity-100" : "translate-x-[100%] opacity-0"
                 }`}
             >

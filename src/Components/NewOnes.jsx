@@ -29,7 +29,7 @@ const NewOnes = () => {
     }, [mockupsApiData]);
     // console.log(newFilterProduct);
     return (
-        <div className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] pt-14 sm:pt-[11vw] md:pt-[9vw] lg:pt-[5vw] mb-[10vw] sm:mb-[18vw]">
+        <div className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] pt-14 sm:pt-[11vw] md:pt-[9vw] lg:pt-[5vw] mb-[20vw] sm:mb-[18vw]">
             <h2 className="font-font5 text-[10vw] tracking-[-0.6vw] pb-4 sm:pb-[1vw] lg:pb-0">
                 new ones
             </h2>
@@ -48,27 +48,27 @@ const NewOnes = () => {
                             spaceBetween: 8,
                         },
                         1024: {
-                            slidesPerView: 3.06,
+                            slidesPerView: 3.08,
                             spaceBetween: 15,
                         },
                     }}
                     modules={[FreeMode]}
                 >
-                    {newFilterProduct.map(({ id, image, image2, title }) => {
+                    {newFilterProduct.map(({ id, image, image2, title,slug }) => {
                         return (
                             <SwiperSlide
                                 key={id}
                                 className="select-none w-full group"
                             >
                                 <div className="border relative overflow-hidden cursor-pointer">
-                                    <Link to={`/shop/${title}`}>
+                                    <Link to={`/shop/${slug[1]}/${title}`}>
                                         <img
                                             className="w-full h-auto"
                                             src={image}
                                             alt=""
                                         />
                                     </Link>
-                                    <Link to={`/shop/${title}`} className="absolute group-hover:opacity-0 group-hover:invisible top-0 left-0 right-0 bottom-0 opacity-100 visible duration-300 transition-all block">
+                                    <Link to={`/shop/${slug[1]}/${title}`} className="absolute group-hover:opacity-0 group-hover:invisible top-0 left-0 right-0 bottom-0 opacity-100 visible duration-300 transition-all block">
                                         <img
                                             className="w-full h-auto"
                                             src={image2}

@@ -34,7 +34,7 @@ const NavBar = () => {
                         {mockupsApiData.categories &&
                             mockupsApiData.categories.map(({ param,id }) => {
                                 return (
-                                    <Link key={id} to={`/product-category/${param}`}>
+                                    <Link key={id} to={`/product-category/${param}/`}>
                                         <AnimatedTitle text={param} />
                                     </Link>
                                 );
@@ -42,7 +42,7 @@ const NavBar = () => {
                     </div>
                     {/* account and cart */}
                     <div className="flex gap-6 lg:gap-8 w-full lg:w-[15%] items-center justify-end leading-none">
-                        <Link to={'/account'} className="hidden lg:block">
+                        <Link to={'/account/'} className="hidden lg:block">
                             <AnimatedTitle text={"account"} />
                         </Link>
                         <div>
@@ -101,67 +101,11 @@ const NavBar = () => {
                         })}
                     <Link
                         onClick={() => setmenu(false)}
-                        to={"/account"}
+                        to={"/account/"}
                         className="block pb-2"
                     >
                         <AnimatedTitle text={"account"} />
                     </Link>
-                    {/* <Link
-                        onClick={() => setmenu(false)}
-                        to={"/products/all-mockups"}
-                        className="block border-b pb-4 pt-2 border-[#C5CACE]"
-                    >
-                        <AnimatedTitle text={"all mockups"} />
-                    </Link>
-                    <Link
-                        onClick={() => setmenu(false)}
-                        to={"/products/billboards"}
-                        className="block border-b pb-4 border-[#C5CACE]"
-                    >
-                        <AnimatedTitle text={"billboards"} />
-                    </Link>
-                    <Link
-                        onClick={() => setmenu(false)}
-                        to={"/products/posters"}
-                        className="block border-b pb-4 border-[#C5CACE]"
-                    >
-                        <AnimatedTitle text={"posters"} />
-                    </Link>
-                    <Link
-                        onClick={() => setmenu(false)}
-                        to={"/products/signs"}
-                        className="block border-b pb-4 border-[#C5CACE]"
-                    >
-                        <AnimatedTitle text={"signs"} />
-                    </Link>
-                    <Link
-                        onClick={() => setmenu(false)}
-                        to={"/products/pylons"}
-                        className="block border-b pb-4 border-[#C5CACE]"
-                    >
-                        <AnimatedTitle text={"pylons"} />
-                    </Link>
-                    <Link
-                        onClick={() => setmenu(false)}
-                        to={"/products/facades"}
-                        className="block border-b pb-4 border-[#C5CACE]"
-                    >
-                        <AnimatedTitle text={"facades"} />
-                    </Link>
-                    <Link
-                        onClick={() => setmenu(false)}
-                        to={"/products/bus-stops"}
-                        className="block pb-4 border-b border-[#C5CACE]"
-                    >
-                        <AnimatedTitle text={"bus stops"} />
-                    </Link> */}
-                    {/* <Link
-                        onClick={() => setmenu(false)}
-                        to={"/products/account"}
-                        className="block pb-2"
-                    >
-                        <AnimatedTitle text={"account"} />
-                    </Link> */}
                 </div>
             </div>
             <SideCart openCart={openCart} setopenCart={setopenCart} />

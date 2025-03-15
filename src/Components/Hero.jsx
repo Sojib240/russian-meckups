@@ -1,168 +1,92 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
     const cardRef = useRef();
     const lineRef = useRef();
     gsap.registerPlugin(ScrollTrigger);
 
-    // useGSAP(() => {
-    //     const cards = cardRef.current.querySelectorAll(".card");
-    //     // console.log(window.innerWidth);
-    //     const mm = gsap.matchMedia();
-    //     window.addEventListener("resize", () => {
-    //         const windowWidth = window.innerWidth;
-    //         if (windowWidth < 1460) {
-    //             mm.add("(min-width:1024px)", () => {
-    //                 let tl = gsap.timeline({
-    //                     ease: "none",
-    //                     scrollTrigger: {
-    //                         trigger: cardRef.current,
-    //                         start: "top 40%",
-    //                         end: "bottom 20%",
-    //                         scrub: true,
-    //                         markers: true,
-    //                     },
-    //                 });
-    //                 tl.to(
-    //                     [cards[0], cards[2]],
-    //                     {
-    //                         scale: 0.9,
-    //                     },
-    //                     "<"
-    //                 );
-    //                 tl.to(
-    //                     cards[1],
-    //                     {
-    //                         scale: 1.15,
-    //                     },
-    //                     "<"
-    //                 );
-    //                 tl.to(
-    //                     lineRef.current,
-    //                     {
-    //                         transform: "translateY(0)",
-    //                     },
-    //                     "<"
-    //                 );
-    //                 firstmedia.revart();
-    //             });
-    //         } else {
-    //             const firstmedia = mm.add("(min-width:1460px)", () => {
-    //                 let tl = gsap.timeline({
-    //                     ease: "none",
-    //                     scrollTrigger: {
-    //                         trigger: cardRef.current,
-    //                         start: "top center",
-    //                         end: "bottom 20%",
-    //                         scrub: true,
-    //                         markers: true,
-    //                     },
-    //                 });
-    //                 tl.to(
-    //                     [cards[0], cards[2]],
-    //                     {
-    //                         scale: 0.85,
-    //                     },
-    //                     "<"
-    //                 );
-    //                 tl.to(
-    //                     cards[1],
-    //                     {
-    //                         scale: 1.25,
-    //                     },
-    //                     "<"
-    //                 );
-    //                 tl.to(
-    //                     lineRef.current,
-    //                     {
-    //                         transform: "translateY(0)",
-    //                     },
-    //                     "<"
-    //                 );
-    //             });
-    //         }
-    //     });
-    // }, []);
-    useEffect(() => {
-        const cards = cardRef.current.querySelectorAll(".card");
-        const mm = gsap.matchMedia();
-        mm.add("(min-width:1024px)", () => {
-            let tl = gsap.timeline({
-                ease: "none",
-                scrollTrigger: {
-                    trigger: cardRef.current,
-                    start: "top 40%",
-                    end: "bottom top",
-                    scrub: true,
-                    // markers: true,
+    useGSAP(() => {
+        //
+        let ctx = gsap.context(() => {
+            const cards = cardRef.current.querySelectorAll(".card");
+            ScrollTrigger.matchMedia({
+                "(min-width:1024px)": () => {
+                    let smallScreenTimeline = gsap.timeline({
+                        scrollTrigger: {
+                            trigger: cardRef.current,
+                            start: "top 40%",
+                            end: "bottom top",
+                            scrub: true,
+                            // markers: true,
+                        },
+                    });
+                    smallScreenTimeline.to(
+                        lineRef.current,
+                        {
+                            rotateX: 0,
+                            ease: "none",
+                        },
+                        "a"
+                    ).to(
+                        [cards[0], cards[2]],
+                        {
+                            scale: 0.85,
+                            ease: "none",
+                        },
+                        "a"
+                    ).to(
+                        cards[1],
+                        {
+                            scale: 1.25,
+                            ease: "none",
+                        },
+                        "a"
+                    );
+                },
+                "(min-width:1440px)": () => {
+                    let bigScreenTimeline = gsap.timeline({
+                        scrollTrigger: {
+                            trigger: cardRef.current,
+                            start: "top center",
+                            end: "bottom top",
+                            scrub: true,
+                            // markers: true,
+                        },
+                    });
+                    bigScreenTimeline.to(
+                        lineRef.current,
+                        {
+                            rotateX: 0,
+                            ease: "none",
+                        },
+                        "a"
+                    ).to(
+                        [cards[0], cards[2]],
+                        {
+                            scale: 0.85,
+                            ease: "none",
+                        },
+                        "a"
+                    ).to(
+                        cards[1],
+                        {
+                            scale: 1.25,
+                            ease: "none",
+                        },
+                        "a"
+                    );
                 },
             });
-            tl.to(
-                lineRef.current,
-                {
-                    // transform: "translateY(0)",
-                    rotateX: 0,
-                    // duration: 5,
-                    ease:'none'
-                },
-                "<"
-            );
-            tl.to(
-                [cards[0], cards[2]],
-                {
-                    scale: 0.85,
-                    ease: "none",
-                    // duration: 3,
-                },
-                "<"
-            );
-            tl.to(
-                cards[1],
-                {
-                    scale: 1.25,
-                    ease: "none",
-                    // duration: 3,
-                },
-                "<"
-            );
         });
-        // firstmedia.revert();
-        // mm.add("(min-width:1024px)", () => {
-        //     let tl = gsap.timeline({
-        //         ease: "power1.inOut",
-        //         scrollTrigger: {
-        //             trigger: cardRef.current,
-        //             start: "top 40%",
-        //             end: "bottom 20%",
-        //             scrub: true,
-        //             markers: true,
-        //         },
-        //     });
-        //     tl.to(
-        //         [cards[0], cards[2]],
-        //         {
-        //             scale: 0.9,
-        //         },
-        //         "<"
-        //     );
-        //     tl.to(
-        //         cards[1],
-        //         {
-        //             scale: 1.15,
-        //         },
-        //         "<"
-        //     );
-        //     tl.to(
-        //         lineRef.current,
-        //         {
-        //             transform: "translateY(0)",
-        //         },
-        //         "<"
-        //     );
-        // });
+        return () => {
+            ctx.revert();
+            ScrollTrigger.clearMatchMedia();
+        };
+
     }, []);
     return (
         <div className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] bg-[#D6DBE0] mt-[75px] lg:mt-[4vw]">
@@ -189,7 +113,7 @@ const Hero = () => {
                 </div>
                 <div
                     ref={cardRef}
-                    className="cards flex items-center justify-between w-full mx-0 lg:mx-[1.5vw] pt-[5vw] md:pt-[0vw] sm:mt-[10px] md:mt-[-25px] lg:mt-[2vw] xl:mt-[-3vw] font-font5 text-[4vw] md:text-[3vw] lg:text-[1.7vw] gap-[1.6vw] "
+                    className="cards flex items-center justify-between w-full mx-0 lg:mx-[1.5vw] pt-[5vw] md:pt-[0vw] sm:mt-[10px] md:mt-[-25px] lg:mt-[1vw] xl:mt-[-3vw] font-font5 text-[4vw] md:text-[3vw] lg:text-[1.7vw] gap-[1.6vw]"
                 >
                     {/* top card for mobile */}
                     <div className="flex-1 font-font5 origin-left border mt-[4vw] sm:mt-0 lg:mt-[4vw] group block lg:hidden relative z-40">
@@ -210,7 +134,7 @@ const Hero = () => {
                         </div>
                     </div>
                     {/* center card for pc */}
-                    <div className="card w-[36%] h-[35vw] origin-center border bg-transparent relative group hidden lg:block">
+                    <Link to={`/product-category/all-mockups/`} className="card w-[36%] h-[35vw] origin-center border bg-transparent relative group hidden lg:block">
                         <div className="absolute group-hover:bg-transparent bg-[#FEE69D] top-0 left-0 w-full h-full select-none z-30 duration-200 transition-all flex flex-col justify-between px-5 lg:px-[1vw] pt-2">
                             <h4 className="text-[2vw] capitalize">Moscow</h4>
                             <h4 className="text-[5vw] tracking-[-0.1vw]">36</h4>
@@ -222,7 +146,7 @@ const Hero = () => {
                             loop
                             src="/Videos/hero-video.mp4"
                         ></video>
-                    </div>
+                    </Link>
                     {/* bottom card */}
                     <div className="card h-[27vw] flex-1 border relative mt-0 lg:mt-[4vw] origin-right group hidden lg:block">
                         <div className="bg-[#D6DBE0] h-full hover:bg-[#FEE69D] px-5 lg:px-[1vw] pt-2 transition-all duration-200">
@@ -240,7 +164,7 @@ const Hero = () => {
                             src="/Videos/hero-video.mp4"
                         ></video>
                     </div>
-                    <p className="font-font5 text-lg sm:text-[4vw] leading-[6vw] md:leading-auto md:text-[3vw] mt-[2.5vw] md:mt-[1.5vw]">
+                    <p className="font-font5 text-base leading-6 sm:text-[4vw] sm:leading-[6vw] md:leading-auto md:text-[3vw] mt-[2.5vw] md:mt-[1.5vw]">
                         Brand Identity mockups from lovely Russian Сities
                     </p>
                 </div>

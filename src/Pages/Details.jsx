@@ -13,14 +13,9 @@ import { Thumbs } from "swiper/modules";
 import { productContext } from "../Utils/Context";
 
 const Details = () => {
-    // document.title = productPageTitle;
-
     const [productsApiData] = useContext(productContext);
-    //
-    //
     const { title } = useParams();
     const [singleProduct, setsingleProduct] = useState();
-    var productPageTitle;
 
     const singleProductId = () => {
         const product =
@@ -31,24 +26,17 @@ const Details = () => {
         setsingleProduct(product);
 
         product.map((p) => {
-            productPageTitle =
-                document.title = `${p.title.toUpperCase()} - Russian Mockups`;
+            document.title = ` ${p.title.toUpperCase()} - Russian Mockups`;
         });
-        
     };
-
-    //
-
     useEffect(() => {
         if (productsApiData) {
             singleProductId();
         }
     }, [productsApiData, title]);
-
-    //
-    //
     const [accordianOpen, setaccordianOpen] = useState(false);
     const [thumbsSwiper, setThumbsSwiper] = useState();
+    const [swiperTotalSlide, setSwiperTotalSlide] = useState();
     return (
         <div className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] bg-[#D6DBE0]">
             <div className="flex flex-col lg:flex-row gap-[2vw] relative">
@@ -66,14 +54,17 @@ const Details = () => {
                         );
                     })}
                 {/* mobile */}
+
                 {singleProduct &&
-                    singleProduct.map(({id,image,image2}) => {
+                    singleProduct.map(({ id, image, image2 }) => {
                         return (
-                            <div key={id} className="slider block lg:hidden relative mt-[80px]">
+                            <div
+                                key={id}
+                                className="slider block lg:hidden relative mt-[80px]"
+                            >
                                 <Swiper
                                     spaceBetween={0}
                                     slidesPerView={1}
-                                    navigation={false}
                                     thumbs={{ swiper: thumbsSwiper }}
                                     modules={[Thumbs]}
                                     className="mySwiper2 border"
@@ -95,11 +86,6 @@ const Details = () => {
                                     onSwiper={setThumbsSwiper}
                                     spaceBetween={10}
                                     slidesPerView={3}
-                                    freeMode={true}
-                                    direction={"horizontal"}
-                                    height={"auto"}
-                                    reverseDirection={true}
-                                    watchSlidesProgress={true}
                                     modules={[Thumbs]}
                                     className="mySwiper cursor-pointer mt-[10px]"
                                 >
@@ -119,6 +105,7 @@ const Details = () => {
                             </div>
                         );
                     })}
+
                 {/*  */}
                 <div className="w-full lg:w-[36%] 2xl:w-[32%] px-0 lg:px-[1.5vw] min-h-[20vw] h-full sticky top-0 right-0 pt-6 lg:pt-[80px]">
                     {singleProduct &&
@@ -156,7 +143,7 @@ const Details = () => {
                     </h4>
                     {/*  */}
                     <div className="border-t border-[#565759] mb-5 sm:mb-8 md:mb-10 lg:mb-16">
-                        <div className="pt-2 sm:pt-3 md:pt-4 lg:pt-5">
+                        <div className="pt-2 sm:pt-3 md:pt-3 lg:pt-4">
                             <button
                                 onClick={() => setaccordianOpen(!accordianOpen)}
                                 className="flex items-center justify-between w-full mb-8 lg:mb-5 cursor-pointer"
@@ -311,8 +298,8 @@ const Details = () => {
             <div className=" text-xl sm:text-2xl lg:text-[2vw] font-font5 mt-24 xl:mt-[7vw] 2xl:mt-[6vw]">
                 <div className="pb-5 lg:pb-[1vw] gap-5 flex items-center justify-between w-full">
                     <h4>Related products</h4>
-                    <p className="block lg:hidden text-[12px] sm:text-sm md:text-base">
-                        1/4
+                    <p className="text-[12px] sm:text-sm md:text-base">
+                        {`${1}/${swiperTotalSlide}`}
                     </p>
                 </div>
                 <div className="w-full">
@@ -320,6 +307,9 @@ const Details = () => {
                         className="z-10 cursor-grab active:cursor-grabbing"
                         slidesPerView={1.35}
                         spaceBetween={8}
+                        onSwiper={(swiper) =>
+                            setSwiperTotalSlide(swiper.slides.length)
+                        }
                         breakpoints={{
                             640: {
                                 slidesPerView: 2.08,
@@ -341,7 +331,7 @@ const Details = () => {
                                 <Link>
                                     <img
                                         className="w-full h-auto"
-                                        src='/Images/Products/MSC-037-1.jpg'
+                                        src="/Images/Products/MSC-037-1.jpg"
                                         alt=""
                                     />
                                 </Link>

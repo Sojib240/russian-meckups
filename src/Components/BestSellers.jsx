@@ -50,20 +50,20 @@ const BestSellers = () => {
                             spaceBetween: 8,
                         },
                         1024: {
-                            slidesPerView: 3.06,
+                            slidesPerView: 3.08,
                             spaceBetween: 15,
                         },
                     }}
                     modules={[FreeMode]}
                 >
-                    {filterProduct.map(({ id, image, image2, title }) => {
+                    {filterProduct.map(({ id, image, image2, title,slug }) => {
                         return (
                             <SwiperSlide
                                 key={id}
                                 className="select-none w-full group"
                             >
                                 <div className="border relative overflow-hidden cursor-pointer">
-                                    <Link to={`/shop/${title}`}>
+                                    <Link to={`/shop/${slug[1]}/${title}`}>
                                         <img
                                             className="w-full h-auto"
                                             src={image}
@@ -71,7 +71,7 @@ const BestSellers = () => {
                                         />
                                     </Link>
                                     <Link
-                                        to={`/shop/${title}`}
+                                        to={`/shop/${slug[1]}/${title}`}
                                         className="absolute group-hover:opacity-0 group-hover:invisible top-0 left-0 right-0 bottom-0 opacity-100 visible duration-300 transition-all block"
                                     >
                                         <img

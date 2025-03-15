@@ -1,128 +1,90 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import React, { useContext, useEffect, useRef } from "react";
-import { productContext } from "../Utils/Context";
+import React, { useRef } from "react";
+import { useGSAP } from "@gsap/react";
 
 const Payments = () => {
-    const [isLoaded] = useContext(productContext);
     const line2Ref = useRef();
     const lineImageRef = useRef();
     const PamentMethodsRef = useRef();
     gsap.registerPlugin(ScrollTrigger);
 
-    useEffect(() => {
-        const PamentMethods =
-            PamentMethodsRef.current.querySelectorAll(".payCard");
-        const mm = gsap.matchMedia();
-        mm.add("(min-width:1024px)", () => {
-            const tl2 = gsap.timeline({
-                scrollTrigger: {
-                    trigger: line2Ref.current,
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: true,
-                    // markers: true,
+    useGSAP(() => {
+        let ctx = gsap.context(() => {
+            const PamentMethods =
+                PamentMethodsRef.current.querySelectorAll(".payCard");
+            ScrollTrigger.matchMedia({
+                "(max-width:1024px)": () => {
+                    let paymentSmallScreenTimeline = gsap.timeline({
+                        scrollTrigger: {
+                            trigger: line2Ref.current,
+                            start: "top bottom",
+                            end: "bottom top",
+                            scrub: true,
+                            // markers: true,
+                        },
+                    });
+                    paymentSmallScreenTimeline
+                    .to(
+                        lineImageRef.current,
+                        {
+                            rotateX: "0deg",
+                            ease: "none",
+                        },
+                        "b"
+                    )
+                },
+                "(min-width:1025px)": () => {
+                    let paymentBigScreenTimeline = gsap.timeline({
+                        scrollTrigger: {
+                            trigger: line2Ref.current,
+                            start: "top bottom",
+                            end: "bottom top",
+                            scrub: true,
+                            // markers: true,
+                        },
+                    });
+                    paymentBigScreenTimeline
+                        .to(
+                            lineImageRef.current,
+                            {
+                                rotateX: "0deg",
+                                ease: "none",
+                            },
+                            "b"
+                        )
+                        .to(
+                            PamentMethods[0],
+                            {
+                                y: "-28vw",
+                                ease: "none",
+                            },
+                            "b"
+                        )
+                        .to(
+                            PamentMethods[1],
+                            {
+                                y: "-25vw",
+                                ease: "none",
+                            },
+                            "b"
+                        )
+                        .to(
+                            PamentMethods[2],
+                            {
+                                y: "-20vw",
+                                ease: "none",
+                            },
+                            "b"
+                        );
                 },
             });
-            tl2.to(
-                lineImageRef.current,
-                {
-                    rotateX: "0deg",
-                    ease: "none",
-                    // duration: 4,
-                },
-                "b"
-            );
-            tl2.to(
-                PamentMethods[0],
-                {
-                    y: "-28vw",
-                    ease: "none",
-                    // duration: 3.5,
-                },
-                "b"
-            );
-            tl2.to(
-                PamentMethods[1],
-                {
-                    y: "-25vw",
-                    ease: "none",
-                    // duration: 5,
-                },
-                "b"
-            );
-            tl2.to(
-                PamentMethods[2],
-                {
-                    y: "-20vw",
-                    ease: "none",
-                    // duration: 4,
-                },
-                "b"
-            );
         });
+        return () => {
+            ctx.revert();
+            ScrollTrigger.clearMatchMedia();
+        };
     }, []);
-
-    //     if (isLoaded) {
-    //         const PamentMethods =
-    //             PamentMethodsRef.current.querySelectorAll(".payCard");
-    //         const tl2 = gsap.timeline({
-    //             scrollTrigger: {
-    //                 trigger: line2Ref.current,
-    //                 start: "top 95%",
-    //                 end: "bottom -160%",
-    //                 scrub: true,
-    //                 markers: true,
-    //             },
-    //         });
-    //         tl2.to(
-    //             lineImageRef.current,
-    //             {
-    //                 rotateX: "0deg",
-    //                 ease: "none",
-    //                 duration: 4,
-    //             },
-    //             ">"
-    //         );
-    //         tl2.to(
-    //             PamentMethods[0],
-    //             {
-    //                 y: "-28vw",
-    //                 ease: "none",
-    //                 duration: 3.5,
-    //             },
-    //             ">"
-    //         );
-    //         tl2.to(
-    //             PamentMethods[1],
-    //             {
-    //                 y: "-25vw",
-    //                 ease: "none",
-    //                 duration: 5,
-    //             },
-    //             ">"
-    //         );
-    //         tl2.to(
-    //             PamentMethods[2],
-    //             {
-    //                 y: "-20vw",
-    //                 ease: "none",
-    //                 duration: 4,
-    //             },
-    //             ">"
-    //         );
-    //     }
-    // }, [isLoaded]);
-
-    const animation = () => {
-        // Refresh ScrollTrigger to ensure it picks up the new elements
-        // ScrollTrigger.refresh();
-    };
-    // useEffect(() => {
-    //     if (isLoaded) {
-    //         animation();
-    //     }
-    // }, [isLoaded]);
 
     return (
         <div className="w-full relative">
@@ -132,7 +94,7 @@ const Payments = () => {
             >
                 <img
                     ref={lineImageRef}
-                    className="w-full h-full object-cover lg:rotate-x-90 origin-top"
+                    className="w-full h-full object-cover rotate-x-90 origin-top"
                     src="/Images/line.svg"
                     alt=""
                 />
@@ -144,7 +106,7 @@ const Payments = () => {
                 </h2>
                 <div
                     ref={PamentMethodsRef}
-                    className="absolute top-1/2 w-full -translate-x-1/2 left-1/2 -translate-y-[40%] grid grid-cols-3 grid-rows-6 p-[15vw]"
+                    className="absolute top-1/2 w-full -translate-x-1/2 left-1/2 -translate-y-1/2 lg:-translate-y-[40%] grid grid-cols-3 grid-rows-6 p-[15vw]"
                 >
                     <div className="payCard pointer-events-none lg:pointer-events-auto w-[7vw] col-span-3 row-span-1 justify-self-end">
                         <img className="w-full" src="/Images/VISA.svg" alt="" />

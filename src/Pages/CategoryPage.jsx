@@ -35,18 +35,18 @@ const CategoryPage = () => {
             </h2>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-y-5 gap-x-2 sm:gap-[3vw] md:gap-[2vw] lg:gap-[1.5vw]">
                 {newCategoriesData &&
-                    newCategoriesData.map(({ id, title, image, image2 }) => {
+                    newCategoriesData.map(({ id, title, image, image2,slug }) => {
                         return (
                             <div key={id} className="select-none w-full group">
                                 <div className="border relative overflow-hidden cursor-pointer">
-                                    <Link to={`/shop/${title}`}>
+                                    <Link to={`/shop/${slug[1]}/${title}/`}>
                                         <img
                                             className="w-full h-auto"
                                             src={image2}
                                             alt=""
                                         />
                                     </Link>
-                                    <Link to={`/shop/${title}`} className="absolute group-hover:opacity-0 group-hover:invisible top-0 left-0 right-0 bottom-0 opacity-100 visible duration-300 transition-all block">
+                                    <Link to={`/shop/${slug[1]}/${title}/`} className="absolute group-hover:opacity-0 group-hover:invisible top-0 left-0 right-0 bottom-0 opacity-100 visible duration-300 transition-all block">
                                         <img
                                             className="w-full h-auto"
                                             src={image}
