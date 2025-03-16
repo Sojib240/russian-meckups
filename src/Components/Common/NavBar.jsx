@@ -59,7 +59,7 @@ const NavBar = () => {
                         </div>
                         <div
                             onClick={() => menuFunction()}
-                            className={`w-[25px] h-[14px] flex lg:hidden flex-col cursor-pointer overflow-hidden origin-center justify-between`}
+                            className={`w-[20px] sm:w-[25px] h-[12px] sm:h-[14px] flex lg:hidden flex-col cursor-pointer overflow-hidden origin-center justify-between`}
                         >
                             <span
                                 className={`w-full bg-black h-[2px] block transition-all duration-200 ${

@@ -29,7 +29,7 @@ const NewOnes = () => {
     }, [mockupsApiData]);
     // console.log(newFilterProduct);
     return (
-        <div className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] pt-14 sm:pt-[11vw] md:pt-[9vw] lg:pt-[5vw] mb-[20vw] sm:mb-[18vw]">
+        <div className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] mb-[20vw] sm:mb-[18vw]">
             <h2 className="font-font5 text-[10vw] tracking-[-0.6vw] pb-4 sm:pb-[1vw] lg:pb-0">
                 new ones
             </h2>

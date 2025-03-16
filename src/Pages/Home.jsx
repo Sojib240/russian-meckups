@@ -5,16 +5,16 @@ import BestSellers from "../Components/BestSellers";
 import NewOnes from "../Components/NewOnes";
 import Payments from "../Components/Payments";
 import MarqueeSection from "../Components/MarqueeSection";
-
+import AllCategories from "../Components/AllCategories";
 
 const Home = () => {
-    document.title="Russian Mockups"
-
+    document.title = "Russian Mockups";
 
     return (
         <div className="bg-[#D6DBE0] min-h-screen">
             <Hero />
             <BestSellers />
+            <AllCategories />
             <NewOnes />
             <Payments />
             <MarqueeSection />

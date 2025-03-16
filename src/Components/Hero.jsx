@@ -1,7 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
@@ -24,28 +24,31 @@ const Hero = () => {
                             // markers: true,
                         },
                     });
-                    smallScreenTimeline.to(
-                        lineRef.current,
-                        {
-                            rotateX: 0,
-                            ease: "none",
-                        },
-                        "a"
-                    ).to(
-                        [cards[0], cards[2]],
-                        {
-                            scale: 0.85,
-                            ease: "none",
-                        },
-                        "a"
-                    ).to(
-                        cards[1],
-                        {
-                            scale: 1.25,
-                            ease: "none",
-                        },
-                        "a"
-                    );
+                    smallScreenTimeline
+                        .to(
+                            lineRef.current,
+                            {
+                                rotateX: 0,
+                                ease: "none",
+                            },
+                            "a"
+                        )
+                        .to(
+                            [cards[0], cards[2]],
+                            {
+                                scale: 0.85,
+                                ease: "none",
+                            },
+                            "a"
+                        )
+                        .to(
+                            cards[1],
+                            {
+                                scale: 1.25,
+                                ease: "none",
+                            },
+                            "a"
+                        );
                 },
                 "(min-width:1440px)": () => {
                     let bigScreenTimeline = gsap.timeline({
@@ -57,28 +60,31 @@ const Hero = () => {
                             // markers: true,
                         },
                     });
-                    bigScreenTimeline.to(
-                        lineRef.current,
-                        {
-                            rotateX: 0,
-                            ease: "none",
-                        },
-                        "a"
-                    ).to(
-                        [cards[0], cards[2]],
-                        {
-                            scale: 0.85,
-                            ease: "none",
-                        },
-                        "a"
-                    ).to(
-                        cards[1],
-                        {
-                            scale: 1.25,
-                            ease: "none",
-                        },
-                        "a"
-                    );
+                    bigScreenTimeline
+                        .to(
+                            lineRef.current,
+                            {
+                                rotateX: 0,
+                                ease: "none",
+                            },
+                            "a"
+                        )
+                        .to(
+                            [cards[0], cards[2]],
+                            {
+                                scale: 0.85,
+                                ease: "none",
+                            },
+                            "a"
+                        )
+                        .to(
+                            cards[1],
+                            {
+                                scale: 1.25,
+                                ease: "none",
+                            },
+                            "a"
+                        );
                 },
             });
         });
@@ -86,7 +92,6 @@ const Hero = () => {
             ctx.revert();
             ScrollTrigger.clearMatchMedia();
         };
-
     }, []);
     return (
         <div className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] bg-[#D6DBE0] mt-[75px] lg:mt-[4vw]">
@@ -134,7 +139,10 @@ const Hero = () => {
                         </div>
                     </div>
                     {/* center card for pc */}
-                    <Link to={`/product-category/all-mockups/`} className="card w-[36%] h-[35vw] origin-center border bg-transparent relative group hidden lg:block">
+                    <Link
+                        to={`/product-category/all-mockups/`}
+                        className="card w-[36%] h-[35vw] origin-center border bg-transparent relative group hidden lg:block"
+                    >
                         <div className="absolute group-hover:bg-transparent bg-[#FEE69D] top-0 left-0 w-full h-full select-none z-30 duration-200 transition-all flex flex-col justify-between px-5 lg:px-[1vw] pt-2">
                             <h4 className="text-[2vw] capitalize">Moscow</h4>
                             <h4 className="text-[5vw] tracking-[-0.1vw]">36</h4>

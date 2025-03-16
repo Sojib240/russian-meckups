@@ -28,13 +28,13 @@ const Data = () => {
             },
             {
                 id: 6,
-                slug: "facades",
                 categoryName: "facades",
+                slug: "facades",
             },
             {
                 id: 7,
-                slug: "bus-stops",
                 categoryName: "bus stops",
+                slug: "bus-stops",
             },
         ],
         productsDetails: [
