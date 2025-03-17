@@ -23,7 +23,7 @@ const Footer = () => {
                     start: "top bottom",
                     end: "bottom bottom",
                     scrub: true,
-                    markers: true,
+                    // markers: true,
                 },
             });
             footerTimeline.from(footerBottomRef.current, {
