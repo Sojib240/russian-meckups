@@ -85,7 +85,7 @@ const AllCategories = () => {
                                 className="relative card-text pl-0 sm:px-[2vw] py-[1vw]"
                             >
                                 <h4 className="relative z-40">{title}</h4>
-                                <div className="card-image w-[300px] h-[400px] hidden absolute top-1/2 pointer-events-none -translate-y-1/2 left-1/2 -translate-x-1/2 p-1 bg-orange-400">
+                                <div className="card-image w-[300px] h-[400px] hidden absolute top-1/2 pointer-events-none -translate-y-1/2 left-1/2 -translate-x-1/2">
                                     <img
                                         className="w-full h-full object-cover"
                                         src={image}

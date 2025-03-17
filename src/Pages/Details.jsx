@@ -2,18 +2,21 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 // swiper js
 import { Swiper, SwiperSlide } from "swiper/react";
+
 // Import Swiper styles
 import "swiper/css";
 // import "swiper/css/navigation";
 import "swiper/css/free-mode";
 import "swiper/css/thumbs";
-// import required modules
-import { FreeMode } from "swiper/modules";
-import { Thumbs } from "swiper/modules";
+import "swiper/css/zoom";
+
+import { FreeMode, Thumbs, Zoom } from "swiper/modules";
 import { productContext } from "../Utils/Context";
+import { CartDataContext } from "../Utils/CartContext";
 
 const Details = () => {
     const [productsApiData] = useContext(productContext);
+    const [cart, setcart] = useContext(CartDataContext);
     const { title } = useParams();
     const [singleProduct, setsingleProduct] = useState();
 
@@ -37,8 +40,21 @@ const Details = () => {
     const [accordianOpen, setaccordianOpen] = useState(false);
     const [thumbsSwiper, setThumbsSwiper] = useState();
     const [swiperTotalSlide, setSwiperTotalSlide] = useState();
+    // add to cart
+    const addToCart = (product) => {
+        let isActive = false;
+        cart.map((cartP) => {
+            if (cartP.id === product.id) {
+                isActive = true;
+            }
+        });
+        if (isActive) {
+            return;
+        }
+        setcart([...cart, product]);
+    };
     return (
-        <div className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] bg-[#D6DBE0]">
+        <div className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] bg-[#D6DBE0] relative z-50">
             <div className="flex flex-col lg:flex-row gap-[2vw] relative">
                 {/* pc */}
                 {singleProduct &&
@@ -66,20 +82,27 @@ const Details = () => {
                                     spaceBetween={0}
                                     slidesPerView={1}
                                     thumbs={{ swiper: thumbsSwiper }}
-                                    modules={[Thumbs]}
+                                    zoom={true}
+                                    modules={[Thumbs, Zoom]}
                                     className="mySwiper2 border"
                                 >
-                                    <SwiperSlide className="swiperslider w-full ">
-                                        <img
-                                            className="w-full h-full object-cover"
-                                            src={image}
-                                        />
+                                    <SwiperSlide className="swiperslider w-full object-cover cursor-zoom-in">
+                                        <div className="swiper-zoom-container">
+                                            <img
+                                                className="w-full h-full object-cover"
+                                                src={image}
+                                                alt="Zoomable"
+                                            />
+                                        </div>
                                     </SwiperSlide>
-                                    <SwiperSlide className="swiperslider w-full object-cover">
-                                        <img
-                                            className="w-full h-full"
-                                            src={image2}
-                                        />
+                                    <SwiperSlide className="swiperslider w-full object-cover cursor-zoom-in">
+                                        <div className="swiper-zoom-container">
+                                            <img
+                                                className="w-full h-full"
+                                                src={image2}
+                                                alt="Zoomable"
+                                            />
+                                        </div>
                                     </SwiperSlide>
                                 </Swiper>
                                 <Swiper
@@ -289,10 +312,16 @@ const Details = () => {
                         </div>
                     </div>
                     {/*  */}
-                    <Link className="uppercase font-font5 text-[12px] sm:text-sm py-3 sm:py-4 px-5 text-center border-[2px] w-full block hover:bg-[#000] hover:text-[#fff] border-black transition-all duration-150">
-                        {" "}
-                        add to cart
-                    </Link>
+                    {singleProduct && singleProduct.map(({id,image,image2,slug,title,price}) => {
+                        return (
+                            <button key={id}
+                                onClick={() => addToCart({id,image,image2,slug,title,price})}
+                                className="uppercase font-font5 text-[12px] sm:text-sm py-3 sm:py-4 px-5 text-center border-[2px] w-full block hover:bg-[#000] hover:text-[#fff] border-black transition-all duration-150"
+                            >
+                                add to cart
+                            </button>
+                        );
+                    })}
                 </div>
             </div>
             <div className=" text-xl sm:text-2xl lg:text-[2vw] font-font5 mt-24 xl:mt-[7vw] 2xl:mt-[6vw]">
@@ -389,14 +418,14 @@ const Details = () => {
                                 <Link>
                                     <img
                                         className="w-full h-auto"
-                                        src="/Images/Products/MSC-037-1.jpg"
+                                        src="/Images/Products/MSC-039-1.jpg"
                                         alt=""
                                     />
                                 </Link>
                                 <Link className="absolute group-hover:opacity-0 group-hover:invisible top-0 left-0 right-0 bottom-0 opacity-100 visible duration-300 transition-all block">
                                     <img
                                         className="w-full h-auto"
-                                        src="/Images/Products/MSC-037-2.jpg"
+                                        src="/Images/Products/MSC-039-2.jpg"
                                         alt=""
                                     />
                                 </Link>

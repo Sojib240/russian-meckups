@@ -1,46 +1,60 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import AnimatedTitle from "./AnimatedTitle";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/all";
-import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
-    gsap.registerPlugin(ScrollTrigger);
-    const sectionRef = useRef();
-    const sectionTop = useRef();
+    const footerBottomRef = useRef();
+    const footerTopSectionRef = useRef();
+    const [height, setheight] = useState(0);
+    const [imageLoaded, setImageLoaded] = useState(false);
+    useEffect(() => {
+        if (imageLoaded && footerBottomRef.current) {
+            const footerHeight = Math.floor(
+                footerBottomRef.current.getBoundingClientRect().height
+            );
+            setheight(footerHeight);
+            let footerTimeline = gsap.timeline({
+                scrollTrigger: {
+                    trigger: footerTopSectionRef.current,
+                    start: "top bottom",
+                    end: "bottom bottom",
+                    scrub: true,
+                    markers: true,
+                },
+            });
+            footerTimeline.from(footerBottomRef.current, {
+                y: '45%',
+                duration: 5,
+                ease: 'none',
+            });
+        }
+    }, [imageLoaded]);
 
-    // useGSAP(() => {
-    //     const footerMm = gsap.matchMedia();
-    //     footerMm.add("(min-width:1024px)", () => {
-    //         let footerTl = gsap.timeline({
-    //             ease: "none",
-    //             scrollTrigger: {
-    //                 trigger: sectionRef.current,
-    //                 start: "top bottom",
-    //                 end: "bottom bottom",
-    //                 scrub: true,
-    //                 // markers: true,
-    //             },
-    //         });
-    //         footerTl.to(
-    //             sectionTop.current,
-    //             {
-    //                 marginBottom: '-0vw',
-    //                 ease: "none",
-    //             }
-    //         );
+    // useEffect(() => {
+    //     let footerTimeline = gsap.timeline({
+    //         scrollTrigger: {
+    //             trigger: footerTopSectionRef.current,
+    //             start: "top bottom",
+    //             end: "bottom bottom",
+    //             scrub: true,
+    //             markers: true,
+    //         },
     //     });
-    //     return()=>{
-    //         footerMm.kill()
-    //     }
+    //     footerTimeline.from(footerBottomRef.current, {
+    //         y: '45%',
+    //         duration: 5,
+    //         ease: 'none',
+    //     });
     // }, []);
+
     return (
-        <div>
-            <div
-                ref={sectionTop}
-                className="w-full footer-top mt-26 sm:mt-[22vw] md:mt-[20vw] lg:mt-[18vw] xl:mt-[13vw] pt-8 xl:pt-0 z-50"
-            >
+        <div className="overflow-hidden">
+            <div className="pt-26 sm:pt-[22vw] md:pt-[20vw] lg:pt-[18vw] xl:pt-[13vw] bg-[#D6DBE0] z-50 relative"></div>
+            <div className="w-full footer-top pt-8 xl:pt-0 z-50 overflow-hidden relative">
                 <div className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] flex flex-col-reverse md:flex-row items-start justify-between leading-[9vw] pb-8 sm:pb-[7vw] md:pb-0">
                     <h4 className="text-base leading-6 sm:text-[4vw] sm:leading-[4.3vw] md:text-[2vw] font-font5 w-full sm:w-[90%] md:w-[33%] md:leading-[2.4vw] pt-[2vw]">
                         For designers and agencies who want to achieve a
@@ -52,9 +66,16 @@ const Footer = () => {
                 </div>
                 <div className="pb-[12vw] pt-5 sm:pt-[6vw]">
                     <div className="w-[60%] sm:w-[46%] lg:w-[30%] mx-auto z-40 relative">
-                        <Link to={`/product-category/all-mockups/`} className="p-[6px] sm:p-[1vw] bg-[#D6DBE0] inline-block border w-full transition-all duration-200 hover:bg-[#FEE69D]">
-                            <div className="">
-                                <img src="/Images/shop-3.jpg" alt="" />
+                        <Link
+                            to={`/product-category/all-mockups/`}
+                            className="p-[6px] sm:p-[1vw] bg-[#D6DBE0] inline-block border w-full transition-all duration-200 hover:bg-[#FEE69D]"
+                        >
+                            <div className="w-full">
+                                <img
+                                    className="w-full"
+                                    src="/Images/shop-3.jpg"
+                                    alt=""
+                                />
                             </div>
                             <p className="pt-2 sm:pt-[1.2vw] text-[11px] sm:text-sm md:text-base font-font5 uppercase text-center">
                                 shop all
@@ -64,11 +85,16 @@ const Footer = () => {
                 </div>
             </div>
             <div
-                ref={sectionRef}
-                className="w-full footer-bottom z-40 py-5 xl:pb-[1vw] px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw]"
+                ref={footerTopSectionRef}
+                style={{ height: `${height}px` }}
+                className="bg-transparent lg:block hidden"
+            ></div>
+            <div
+                ref={footerBottomRef}
+                className="w-full  lg:fixed lg:bottom-0 footer-bottom py-5 xl:pb-[1vw] px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] z-30"
             >
                 <div className="flex justify-between flex-col lg:flex-row gap-[2vw] py-[2vw] border-b mb-[1vw]">
-                    <div className="w-full lg:w-[40%]">
+                    <div className="w-full lg:w-[40%] lg:pr-8">
                         <div className="uppercase flex flex-col justify-between gap-1 lg:gap-5 font-font5 text-sm max-w-full w-full lg:max-w-[400px]">
                             <div>
                                 <p>
@@ -197,9 +223,10 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className="w-full">
+                <div className="w-full h-full">
                     <img
-                        className="w-full"
+                        onLoad={() => setImageLoaded(true)}
+                        className="w-full h-full"
                         src="/Images/Footer-mockup.svg"
                         alt=""
                     />

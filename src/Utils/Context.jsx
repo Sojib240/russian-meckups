@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useState } from "react";
 
 export const productContext = createContext();
 
@@ -50,6 +50,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "pylons"],
                 newOnes: null,
                 bestSeller: true,
+                price: 999,
+                amount: 1,
                 title: "msc-003",
             },
             {
@@ -59,6 +61,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "bus-stops"],
                 newOnes: null,
                 bestSeller: true,
+                price: 999,
+                amount: 1,
                 title: "msc-021",
             },
             {
@@ -68,6 +72,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "posters"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-035",
             },
             {
@@ -77,6 +83,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "facades"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-018",
             },
             {
@@ -86,6 +94,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "billboards"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-015",
             },
             {
@@ -95,6 +105,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "posters"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-005",
             },
             {
@@ -104,6 +116,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "billboards"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-006",
             },
             {
@@ -113,6 +127,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "signs"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-025",
             },
             {
@@ -122,6 +138,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "facades"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-007",
             },
             {
@@ -131,6 +149,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "pylons"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-001",
             },
             {
@@ -140,6 +160,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "bus-stops"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-009",
             },
             {
@@ -149,6 +171,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "billboards"],
                 newOnes: null,
                 bestSeller: true,
+                price: 999,
+                amount: 1,
                 title: "msc-010",
             },
             {
@@ -158,6 +182,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "posters"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-013",
             },
             {
@@ -167,6 +193,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "billboards"],
                 newOnes: null,
                 bestSeller: true,
+                price: 999,
+                amount: 1,
                 title: "msc-014",
             },
             {
@@ -176,6 +204,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "pylons"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-032",
             },
             {
@@ -185,6 +215,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "posters"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-038",
             },
             {
@@ -194,6 +226,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "posters"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-004",
             },
             {
@@ -203,6 +237,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "posters"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-016",
             },
             {
@@ -212,6 +248,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "pylons"],
                 newOnes: null,
                 bestSeller: true,
+                price: 999,
+                amount: 1,
                 title: "msc-033",
             },
             {
@@ -221,6 +259,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "posters"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-036",
             },
             {
@@ -230,6 +270,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "signs"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-029",
             },
             {
@@ -239,6 +281,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "pylons"],
                 newOnes: true,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-039",
             },
             {
@@ -248,6 +292,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "facades"],
                 newOnes: true,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-040",
             },
             {
@@ -257,6 +303,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "pylons"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-017",
             },
             {
@@ -266,6 +314,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "signs"],
                 newOnes: true,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-044",
             },
             {
@@ -275,6 +325,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "signs"],
                 newOnes: true,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-041",
             },
             {
@@ -284,6 +336,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "pylons"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-019",
             },
             {
@@ -293,6 +347,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "pylons"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-008",
             },
             {
@@ -302,6 +358,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "pylons"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-020",
             },
             {
@@ -311,6 +369,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "facades"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-023",
             },
             {
@@ -320,6 +380,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "facades"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-024",
             },
             {
@@ -329,6 +391,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "signs"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-027",
             },
             {
@@ -338,6 +402,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "signs"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-026",
             },
             {
@@ -347,6 +413,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "signs"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-022",
             },
             {
@@ -356,6 +424,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "facades"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-030",
             },
             {
@@ -365,6 +435,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "pylons"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-031",
             },
             {
@@ -374,6 +446,8 @@ const Context = (props) => {
                 slug: ["all-mockups", "signs"],
                 newOnes: null,
                 bestSeller: null,
+                price: 999,
+                amount: 1,
                 title: "msc-037",
             },
         ],

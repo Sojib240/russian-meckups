@@ -3,9 +3,11 @@ import AnimatedTitle from "./AnimatedTitle";
 import { Link } from "react-router-dom";
 import SideCart from "./SideCart";
 import { productContext } from "../../Utils/Context";
+import { CartDataContext } from "../../Utils/CartContext";
 
 const NavBar = () => {
     const [mockupsApiData] = useContext(productContext);
+    const [cart] = useContext(CartDataContext);
 
     const [openCart, setopenCart] = useState(false);
     const [menu, setmenu] = useState(false);
@@ -15,7 +17,7 @@ const NavBar = () => {
     return (
         <>
             <div className="relative">
-                <nav className="flex justify-between items-center py-4 lg:py-3 px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] bg-[#D6DBE0] border-b w-full fixed top-0 z-50">
+                <nav className="flex justify-between items-center py-4 lg:py-3 px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] bg-[#D6DBE0] border-b w-full fixed top-0 z-[999]">
                     {/* logo */}
                     <div className="w-full lg:w-[15%]">
                         <Link
@@ -30,22 +32,27 @@ const NavBar = () => {
                         </Link>
                     </div>
                     {/* menu */}
-                    <div className="gap-8 w-[70%] justify-center leading-none hidden lg:flex">
+                    <div className="gap-6 xl:gap-8 w-[70%] justify-center leading-none hidden lg:flex">
                         {mockupsApiData.categories &&
-                            mockupsApiData.categories.map(({ param,id }) => {
+                            mockupsApiData.categories.map(({ param, id }) => {
                                 return (
-                                    <Link key={id} to={`/product-category/${param}/`}>
-                                        <AnimatedTitle text={param} />
+                                    <Link
+                                        key={id}
+                                        to={`/product-category/${param}/`}
+                                    >
+                                        <AnimatedTitle
+                                            text={param.replace(/-/, " ")}
+                                        />
                                     </Link>
                                 );
                             })}
                     </div>
                     {/* account and cart */}
                     <div className="flex gap-6 lg:gap-8 w-full lg:w-[15%] items-center justify-end leading-none">
-                        <Link to={'/account/'} className="hidden lg:block">
+                        <Link to={"/account/"} className="hidden lg:block">
                             <AnimatedTitle text={"account"} />
                         </Link>
-                        <div>
+                        <div className="relative">
                             <span
                                 onClick={() => setopenCart(true)}
                                 className="block cursor-pointer w-[14px]"
@@ -56,6 +63,11 @@ const NavBar = () => {
                                     alt=""
                                 />
                             </span>
+                            {cart.length != 0 && (
+                                <span className="w-4 h-4 lg:h-[18px] lg:w-[18px] rounded-full bg-black text-white text-[9px] lg:text-[10px] flex items-center justify-center font-font5 absolute top-[-6px] right-[-8px] pointer-events-none">
+                                    {cart.length}
+                                </span>
+                            )}
                         </div>
                         <div
                             onClick={() => menuFunction()}
@@ -88,14 +100,15 @@ const NavBar = () => {
                     }`}
                 >
                     {mockupsApiData.categories &&
-                        mockupsApiData.categories.map(({ param,id }) => {
+                        mockupsApiData.categories.map(({ param, id }) => {
                             return (
-                                <Link key={id}
+                                <Link
+                                    key={id}
                                     className="block border-b pb-4 pt-2 border-[#C5CACE]"
                                     onClick={() => setmenu(false)}
                                     to={`/product-category/${param}/`}
                                 >
-                                    <AnimatedTitle text={param} />
+                                    <AnimatedTitle text={param.replace(/-/, " ")} />
                                 </Link>
                             );
                         })}

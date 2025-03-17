@@ -11,13 +11,14 @@ const Home = () => {
     document.title = "Russian Mockups";
 
     return (
-        <div className="bg-[#D6DBE0] min-h-screen">
+        <div className="bg-[#D6DBE0] min-h-screen z-50 relative">
             <Hero />
             <BestSellers />
             <AllCategories />
             <NewOnes />
             <Payments />
             <MarqueeSection />
+            {/* <Empty /> */}
         </div>
     );
 };

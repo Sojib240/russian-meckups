@@ -4,7 +4,7 @@ import NavBar from "./Components/Common/NavBar";
 import LenisSmoothScroll from "./Utils/LenisSmoothScroll";
 import { productContext } from "./Utils/Context";
 import { Route, Routes } from "react-router-dom";
-import Shop from "./Pages/Shop";
+// import Shop from "./Pages/Shop";
 import Details from "./Pages/Details";
 import Footer from "./Components/Common/Footer";
 import ScrollToTop from "./Components/Common/ScrollToTop";
@@ -15,7 +15,6 @@ const App = () => {
     return (
         <>
             <LenisSmoothScroll />
-            <ScrollToTop />
             <NavBar />
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -26,6 +25,7 @@ const App = () => {
                 <Route path="/account/" element={<Account />} />
                 <Route path="/shop/:slug/:title/" element={<Details />} />
             </Routes>
+            <ScrollToTop />
             <Footer />
         </>
     );

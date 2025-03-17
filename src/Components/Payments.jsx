@@ -3,28 +3,51 @@ import { ScrollTrigger } from "gsap/all";
 import React, { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 
+gsap.registerPlugin(ScrollTrigger);
 const Payments = () => {
     const line2Ref = useRef();
     const lineImageRef = useRef();
     const PamentMethodsRef = useRef();
-    gsap.registerPlugin(ScrollTrigger);
+    let paymentBigScreenTimeline;
+    let paymentSmallScreenTimeline;
 
     useGSAP(() => {
-        let ctx = gsap.context(() => {
-            const PamentMethods =
-                PamentMethodsRef.current.querySelectorAll(".payCard");
-            ScrollTrigger.matchMedia({
-                "(max-width:1024px)": () => {
-                    let paymentSmallScreenTimeline = gsap.timeline({
-                        scrollTrigger: {
-                            trigger: line2Ref.current,
-                            start: "top bottom",
-                            end: "bottom top",
-                            scrub: true,
-                            // markers: true,
-                        },
-                    });
-                    paymentSmallScreenTimeline
+        const PamentMethods =
+            PamentMethodsRef.current.querySelectorAll(".payCard");
+        ScrollTrigger.matchMedia({
+            "(max-width:1024px)": () => {
+                if (paymentBigScreenTimeline) paymentBigScreenTimeline.kill();
+                paymentSmallScreenTimeline = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: line2Ref.current,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: true,
+                        // markers: true,
+                    },
+                });
+                paymentSmallScreenTimeline.to(
+                    lineImageRef.current,
+                    {
+                        rotateX: "0deg",
+                        ease: "none",
+                    },
+                    "b"
+                );
+            },
+            "(min-width:1025px)": () => {
+                if (paymentSmallScreenTimeline)
+                    paymentSmallScreenTimeline.kill();
+                paymentBigScreenTimeline = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: line2Ref.current,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: true,
+                        // markers: true,
+                    },
+                });
+                paymentBigScreenTimeline
                     .to(
                         lineImageRef.current,
                         {
@@ -33,57 +56,32 @@ const Payments = () => {
                         },
                         "b"
                     )
-                },
-                "(min-width:1025px)": () => {
-                    let paymentBigScreenTimeline = gsap.timeline({
-                        scrollTrigger: {
-                            trigger: line2Ref.current,
-                            start: "top bottom",
-                            end: "bottom top",
-                            scrub: true,
-                            // markers: true,
+                    .to(
+                        PamentMethods[0],
+                        {
+                            y: "-28vw",
+                            ease: "none",
                         },
-                    });
-                    paymentBigScreenTimeline
-                        .to(
-                            lineImageRef.current,
-                            {
-                                rotateX: "0deg",
-                                ease: "none",
-                            },
-                            "b"
-                        )
-                        .to(
-                            PamentMethods[0],
-                            {
-                                y: "-28vw",
-                                ease: "none",
-                            },
-                            "b"
-                        )
-                        .to(
-                            PamentMethods[1],
-                            {
-                                y: "-25vw",
-                                ease: "none",
-                            },
-                            "b"
-                        )
-                        .to(
-                            PamentMethods[2],
-                            {
-                                y: "-20vw",
-                                ease: "none",
-                            },
-                            "b"
-                        );
-                },
-            });
+                        "b"
+                    )
+                    .to(
+                        PamentMethods[1],
+                        {
+                            y: "-25vw",
+                            ease: "none",
+                        },
+                        "b"
+                    )
+                    .to(
+                        PamentMethods[2],
+                        {
+                            y: "-20vw",
+                            ease: "none",
+                        },
+                        "b"
+                    );
+            },
         });
-        return () => {
-            ctx.revert();
-            ScrollTrigger.clearMatchMedia();
-        };
     }, []);
 
     return (

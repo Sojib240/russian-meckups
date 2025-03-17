@@ -1,9 +1,4 @@
 @font-face {
-    font-family: 'font1';
-    src: url('/Fonts/icomoon.woff') format('woff');
-}
-
-@font-face {
     font-family: 'font2';
     src: url('/Fonts/KFOlCnqEu92Fr1MmEU9fBBc4.woff2') format('woff2');
 }
@@ -26,7 +21,6 @@
 @import "tailwindcss";
 
 @theme {
-    --font-font1: "font1", "sans-serif";
     --font-font2: "font2", "sans-serif";
     --font-font3: "font3", "sans-serif";
     --font-font4: "font4", "sans-serif";
@@ -42,9 +36,6 @@ body {
     height: 100px !important;
 }
 
-/* .swiper.swiper-initialized.swiper-horizontal.mySwiper2.border.swiper-backface-hidden{
-    height:80vh !important;
-} */
 @media (max-width:480px) {
     .SwiperSlideThumb {
         width: 80px !important;
@@ -63,25 +54,17 @@ body {
     border-bottom: 1px solid #000;
     
 }
-
-/* 
- @media (max-width:640px) {
-    .footer-top{
-        height: 40vh;
-     }
- }
- @media (max-width:768px) {
-    .footer-top{
-        height: 60vh;
-     }
- }
- @media (max-width:1024px) {
-    .footer-top{
-        height: 70vh;
-     }
- }
- @media (max-width:1280px) {
-    .footer-top{
-        height: 80vh;
-     }
- } */
+.cartMain::-webkit-scrollbar{
+    width: 2px;
+    background: #C0C5C9;
+    border-radius: 100px;
+    overflow: hidden;
+}
+.cartMain::-webkit-scrollbar-thumb{
+    width: 100%;
+    background:#000;
+    border-radius: 100px;
+}
+.cartMain:last-child{
+    margin-bottom: 0 !important;
+}
