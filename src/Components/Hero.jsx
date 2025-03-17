@@ -152,17 +152,17 @@ const Hero = () => {
                     {/* rotate-x-[60deg] 2xl:rotate-x-[72deg]  translate-y-[-63%] */}
                     <img
                         ref={lineRef}
-                        className="w-full h-full object-cover origin-top "
+                        className="w-full h-full object-cover origin-top"
                         src="/Images/line.svg"
                         alt=""
                     />
                 </div>
                 <div
                     ref={cardRef}
-                    className="cards flex items-center justify-between w-full mx-0 lg:mx-[1.5vw] pt-[5vw] md:pt-[0vw] sm:mt-[10px] md:mt-[-25px] lg:mt-[1vw] xl:mt-[-3vw] font-font5 text-[4vw] md:text-[3vw] lg:text-[1.7vw] gap-[1.6vw]"
+                    className="cards flex items-center justify-between w-full mx-0 lg:mx-[1.5vw] pt-[5vw] md:pt-[0vw] sm:mt-[10px] md:mt-[-25px] lg:mt-[1vw] xl:mt-[-3vw] font-font5 text-[4vw] md:text-[3vw] lg:text-[1.7vw] gap-[1.6vw] z-50 relative lg:z-auto"
                 >
                     {/* top card for mobile */}
-                    <div className="flex-1 font-font5 origin-left border mt-[4vw] sm:mt-0 lg:mt-[4vw] group block lg:hidden relative z-40">
+                    <div className="flex-1 font-font5 origin-left border mt-[4vw] sm:mt-0 lg:mt-[4vw] group block lg:hidden relative z-50 lg:z-40">
                         <div className="group-hover:bg-[#D6DBE0] h-full relative flex flex-col gap-[12vw] sm:gap-[100px] md:gap-[150px] justify-between transition-all duration-200 px-[2.5vw] md:px-[2vw] lg:px-[1vw] pt-[1.5vw] md:pt-[1vw] lg:pt-[0.8vw] bg-[#FEE69D]">
                             <h4 className="capitalize">moscow</h4>
                             <h4 className="text-[12vw] md:text-[4.5vw] lg:text-[3.6vw] tracking-[-0.1vw]">
@@ -171,7 +171,7 @@ const Hero = () => {
                         </div>
                     </div>
                     {/* top card for pc */}
-                    <div className="card flex-1 origin-left border mt-[-4vw] sm:mt-[-40px] md:mt-[-70px] lg:mt-[4vw] h-auto lg:h-[23vw] group relative z-50">
+                    <div className="card first-card flex-1 origin-left border mt-[-4vw] sm:mt-[-40px] md:mt-[-70px] lg:mt-[4vw] h-auto lg:h-[23vw] group z-40 lg:relative lg:z-50">
                         <div className="group-hover:bg-[#FEE69D] h-full relative flex flex-col gap-[12vw] sm:gap-[100px] md:gap-[150px] justify-between transition-all duration-200 px-[2.5vw] md:px-[2vw] lg:px-[1vw] pt-[1.5vw] md:pt-[1vw] lg:pt-[0.8vw] bg-[#D6DBE0]">
                             <h4 className="capitalize">St.Petersburg</h4>
                             <h4 className="text-[12vw] md:text-[4.5vw] lg:text-[3.6vw] tracking-[-0.1vw]">
@@ -182,7 +182,7 @@ const Hero = () => {
                     {/* center card for pc */}
                     <Link
                         to={`/product-category/all-mockups/`}
-                        className="card w-[36%] h-[35vw] origin-center border bg-transparent relative group hidden lg:block"
+                        className="card center-card w-[36%] h-[35vw] origin-center border bg-transparent lg:relative group hidden lg:block"
                     >
                         <div className="absolute group-hover:bg-transparent bg-[#FEE69D] top-0 left-0 right-0 w-full h-full select-none z-30 flex flex-col justify-between px-5 lg:px-[1vw] pt-2">
                             <h4 className="text-[2vw] capitalize">Moscow</h4>

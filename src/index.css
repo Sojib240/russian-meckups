@@ -68,3 +68,14 @@ body {
 .cartMain:last-child{
     margin-bottom: 0 !important;
 }
+.first-card{
+    z-index: 99 !important;
+    position: relative !important;
+}
+.center-card{
+    z-index: 2 !important;
+}
+.cards{
+    z-index: 99 !important;
+    position: relative !important;
+}
