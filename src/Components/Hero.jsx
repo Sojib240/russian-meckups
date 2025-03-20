@@ -1,6 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
@@ -23,7 +23,7 @@ const Hero = () => {
     // useGSAP(() => {
     //     const cards = cardRef.current.querySelectorAll(".card");
     //     ScrollTrigger.matchMedia({
-    //         "(min-width: 1024px)": function () {
+    //         "(min-width:= 1023px)": function () {
     //           // Kill previous timeline (if it exists) when switching to a new breakpoint
     //           if (bigScreenTimeline) bigScreenTimeline.kill();
 
@@ -73,6 +73,15 @@ const Hero = () => {
     // }, []); // Run once when component mounts
 
     //
+    const [heroResponsive, setheroResponsive] = useState(window.innerWidth >= 1023);
+    useEffect(() => {
+        window.addEventListener("resize", () => {
+            setheroResponsive(window.innerWidth >= 1023);
+        });
+        return () => {
+            window.removeEventListener("resize", () => {});
+        };
+    }, []);
     const { scrollYProgress } = useScroll({
         target: mainRef,
         offset: ["start end", "end start"],
@@ -80,9 +89,6 @@ const Hero = () => {
     const scale = useTransform(scrollYProgress, [0.5, 1], [1, 1.25]);
     const scale2 = useTransform(scrollYProgress, [0.5, 1], [1, 0.85]);
     const rotateX = useTransform(scrollYProgress, [0.5, 1], [68, 0]);
-    // const smoothRotateX  = useSpring(rotateX, { stiffness: 200, damping: 100 });
-
-    // const scale3 = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
 
     return (
         <div
@@ -102,9 +108,8 @@ const Hero = () => {
             </div>
             <div className="relative flex flex-col lg:flex-row">
                 <div className="w-full absolute h-[41vw] overflow-hidden top-0 mt-[1vw] lg:block">
-                    {/* rotate-x-[60deg] 2xl:rotate-x-[72deg]  translate-y-[-63%] */}
                     <motion.img
-                        style={{ rotateX }}
+                        style={{ rotateX: heroResponsive ? rotateX : 0 }}
                         // ref={lineRef}
                         className="w-full h-full object-cover rotate-x-[68deg] origin-top"
                         src="/Images/line.svg"
@@ -126,7 +131,7 @@ const Hero = () => {
                     </div>
                     {/* top card for pc */}
                     <motion.div
-                        style={{ scale: scale2 }}
+                        style={{ scale: heroResponsive ? scale2 : 1 }}
                         className="card first-card flex-1 origin-left border mt-[-4vw] sm:mt-[-40px] md:mt-[-70px] lg:mt-[4vw] h-auto lg:h-[23vw] group z-40 lg:relative lg:z-50"
                     >
                         <div className="group-hover:bg-[#FEE69D] h-full relative flex flex-col gap-[12vw] sm:gap-[100px] md:gap-[150px] justify-between transition-all duration-200 px-[2.5vw] md:px-[2vw] lg:px-[1vw] pt-[1.5vw] md:pt-[1vw] lg:pt-[0.8vw] bg-[#D6DBE0]">
@@ -137,7 +142,10 @@ const Hero = () => {
                         </div>
                     </motion.div>
                     {/* center card for pc */}
-                    <motion.div style={{ scale }} className="w-[36%] h-[35vw]">
+                    <motion.div
+                        style={{ scale }}
+                        className="w-[36%] h-[35vw] lg:block hidden"
+                    >
                         <Link
                             to={`/product-category/all-mockups/`}
                             className="card center-card w-full h-full origin-center border bg-transparent lg:relative group hidden lg:block"
@@ -161,16 +169,16 @@ const Hero = () => {
                     </motion.div>
                     {/* bottom card */}
                     <motion.div
-                        style={{ scale: scale2 }}
-                        className="card first-card flex-1 origin-right border mt-[-4vw] sm:mt-[-40px] md:mt-[-70px] lg:mt-[4vw] h-auto lg:h-[23vw] group z-40 lg:relative lg:z-50"
+                        style={{ scale: heroResponsive ? scale2 : 1 }}
+                        className="card first-card hidden lg:block flex-1 origin-right border mt-[-4vw] sm:mt-[-40px] md:mt-[-70px] lg:mt-[4vw] h-auto lg:h-[23vw] group z-40 lg:relative lg:z-50"
                     >
-                        <div className="group-hover:bg-[#FEE69D] h-full relative flex flex-col gap-[12vw] sm:gap-[100px] md:gap-[150px] justify-between transition-all duration-200 px-[2.5vw] md:px-[2vw] lg:px-[1vw] pt-[1.5vw] md:pt-[1vw] lg:pt-[0.8vw] bg-[#D6DBE0]">
+                        <div className="group-hover:bg-[#FEE69D] h-full relative flex flex-col gap-[12vw] sm:gap-[100px] md:gap-[150px] justify-between transition-all duration-200 px-[2.5vw] md:px-[2vw] lg:px-[1vw] pt-[1.5vw] md:pt-[1vw] lg:pt-[0.8vw] bg-[#D6DBE0] ">
                             <h4>more сities to come…</h4>
                         </div>
                     </motion.div>
                 </div>
                 {/* for mobile */}
-                <div className="w-full h-[85vw] block lg:hidden mt-[-12vw] relative z-50">
+                <div className="w-full h-[85vw] block lg:hidden mt-[-12vw] relative z-50 mb-28 sm:mb-[28vw] md:mb-[22vw] lg:mb-0">
                     <div className="card w-full h-auto border bg-transparent">
                         <video
                             className="w-full h-[30%] object-cover"

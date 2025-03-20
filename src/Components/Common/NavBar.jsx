@@ -1,19 +1,100 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import AnimatedTitle from "./AnimatedTitle";
 import { Link } from "react-router-dom";
 import SideCart from "./SideCart";
 import { productContext } from "../../Utils/Context";
 import { CartDataContext } from "../../Utils/CartContext";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
-const NavBar = () => {
+const NavBar = ({ openCart, setopenCart }) => {
     const [mockupsApiData] = useContext(productContext);
     const [cart] = useContext(CartDataContext);
 
-    const [openCart, setopenCart] = useState(false);
     const [menu, setmenu] = useState(false);
     const menuFunction = () => {
         setmenu(!menu);
     };
+    const hambarger1 = useRef();
+    const hambarger2 = useRef();
+
+    useGSAP(() => {
+        const timel = gsap.timeline();
+        if (menu) {
+            timel.to(
+                hambarger1.current,
+                {
+                    top: "50%",
+                    duration: 0.1,
+                    ease: "power4.inOut",
+                },
+                "a"
+            );
+            timel.to(
+                hambarger2.current,
+                {
+                    top: "50%",
+                    duration: 0.1,
+                    ease: "power4.inOut",
+                },
+                "a"
+            );
+            timel.to(
+                hambarger1.current,
+                {
+                    delay: 0.1,
+                    rotate: "45deg",
+                    duration: 0.1,
+                    ease: "power4.inOut",
+                },
+                "b"
+            );
+            timel.to(
+                hambarger2.current,
+                {
+                    delay: 0.1,
+                    rotate: "-45deg",
+                    duration: 0.1,
+                    ease: "power4.inOut",
+                },
+                "b"
+            );
+        } else {
+            timel.to(
+                hambarger1.current,
+                {
+                    rotate: "0deg",
+                    duration: 0.1,
+                    ease: "power4.inOut",
+                },
+                "a"
+            );
+            timel.to(
+                hambarger2.current,
+                {
+                    rotate: "0deg",
+                    duration: 0.1,
+                    ease: "power4.inOut",
+                },
+                "a"
+            );
+            timel.to(
+                hambarger1.current,
+                { delay: 0.1, top: "0%", duration: 0.1, ease: "power1.inOut" },
+                "b"
+            );
+            timel.to(
+                hambarger2.current,
+                {
+                    delay: 0.1,
+                    top: "100%",
+                    duration: 0.1,
+                    ease: "power4.inOut",
+                },
+                "b"
+            );
+        }
+    }, [menu]);
     return (
         <>
             <div className="relative">
@@ -69,26 +150,23 @@ const NavBar = () => {
                                 </span>
                             )}
                         </div>
-                        <div
+                        <button
                             onClick={() => menuFunction()}
-                            className={`w-[20px] sm:w-[25px] h-[12px] sm:h-[14px] flex lg:hidden flex-col cursor-pointer overflow-hidden origin-center justify-between`}
+                            className="h-[20px] sm:h-[25px] flex items-center justify-center cursor-pointer"
                         >
-                            <span
-                                className={`w-full bg-black h-[2px] block transition-all duration-200 ${
-                                    menu
-                                        ? "translate-x-[100%]"
-                                        : "translate-x-[0%]"
-                                }`}
-                            ></span>
-                            <span className="w-full bg-black h-[2px] block transition-all duration-200"></span>
-                            <span
-                                className={`w-[75%] bg-black h-[2px] block transition-all duration-200 ${
-                                    menu
-                                        ? "translate-x-[-110%]"
-                                        : "translate-x-[0%]"
-                                }`}
-                            ></span>
-                        </div>
+                            <div
+                                className={`w-[20px] sm:w-[25px] h-[8px] block lg:hidden  cursor-pointer relative`}
+                            >
+                                <span
+                                    ref={hambarger1}
+                                    className={`hambarger-line absolute w-full bg-black h-[2px] block transition-all duration-200 pointer-events-none`}
+                                />
+                                <span
+                                    ref={hambarger2}
+                                    className="hambarger-line absolute top-1/2 -translate-y-1/2 w-full bg-black h-[2px] block transition-all duration-200 pointer-events-none"
+                                />
+                            </div>
+                        </button>
                     </div>
                 </nav>
                 {/* mobile */}
@@ -108,7 +186,9 @@ const NavBar = () => {
                                     onClick={() => setmenu(false)}
                                     to={`/product-category/${param}/`}
                                 >
-                                    <AnimatedTitle text={param.replace(/-/, " ")} />
+                                    <AnimatedTitle
+                                        text={param.replace(/-/, " ")}
+                                    />
                                 </Link>
                             );
                         })}

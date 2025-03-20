@@ -1,6 +1,6 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -11,8 +11,8 @@ const Payments = () => {
     const lineImageRef = useRef();
     const PamentMethodsRef = useRef();
     const paymentMainRef = useRef();
-    let paymentBigScreenTimeline;
-    let paymentSmallScreenTimeline;
+    // let paymentBigScreenTimeline;
+    // let paymentSmallScreenTimeline;
 
     // useGSAP(() => {
     //     const PamentMethods =
@@ -90,14 +90,23 @@ const Payments = () => {
         target: paymentMainRef,
         offset: ["start end", "end start"],
     });
-    const y = useTransform(scrollYProgress, [0, 1], ["0", "-28vw"]);
-    const y2 = useTransform(scrollYProgress, [0, 1], ["0", "-25vw"]);
+    const [paymentResponsive, setpaymentResponsive] = useState(window.innerWidth >= 1023);
+    useEffect(() => {
+        window.addEventListener("resize", () => {
+            setpaymentResponsive(window.innerWidth >= 1023);
+        });
+        return () => {
+            window.removeEventListener("resize", () => {});
+        };
+    }, []);
+    const y = useTransform(scrollYProgress, [0, 1], ["0", "-20vw"]);
+    const y2 = useTransform(scrollYProgress, [0, 1], ["0", "-20vw"]);
     const y3 = useTransform(scrollYProgress, [0, 1], ["0", "-20vw"]);
     const rotateX = useTransform(scrollYProgress, [0, 1], [90, 0]);
     return (
         <div ref={paymentMainRef} className="w-full relative">
             <div
-                ref={line2Ref}
+                // ref={line2Ref}
                 className="w-full h-[70vw] absolute top-0 left-0"
             >
                 <motion.img
@@ -109,23 +118,23 @@ const Payments = () => {
                 />
             </div>
             <div className="w-[69.8vw] h-[69.8vw] rounded-full bg-[#D6DBE0] mx-auto relative z-30 px-[2vw] pb-[4vw] flex items-center justify-center font-font5 font-bold tracking-[-0.5vw]">
-                <h2 className="text-2xl leading-8 sm:text-[9.5vw] sm:leading-[9.5vw] text-center">
+                <h2 className=" text-[8vw] leading-[9vw] sm:text-[9.5vw] sm:leading-[9.5vw] text-center">
                     we <br /> accept <br /> payments <br /> from all over <br />
                     the world
                 </h2>
                 <div
-                    ref={PamentMethodsRef}
+                    // ref={PamentMethodsRef}
                     className="absolute top-1/2 w-full -translate-x-1/2 left-1/2 -translate-y-1/2 lg:-translate-y-[40%] grid grid-cols-3 grid-rows-6 p-[15vw]"
                 >
                     <motion.div
-                        style={{ y }}
-                        className="payCard pointer-events-none lg:pointer-events-auto w-[7vw] col-span-3 row-span-1 justify-self-end"
+                        style={{ y: paymentResponsive ? y : 0 }}
+                        className="payCard pointer-events-none lg:pointer-events-auto w-[10vw] sm:w-[7vw] col-span-3 row-span-1 justify-self-end"
                     >
                         <img className="w-full" src="/Images/VISA.svg" alt="" />
                     </motion.div>
                     <motion.div
-                        style={{ y: y3 }}
-                        className="payCard pointer-events-none lg:pointer-events-auto w-[7vw] col-span-3 row-span-4 justify-self-start"
+                        style={{ y: paymentResponsive ? y3 : 0 }}
+                        className="payCard pointer-events-none lg:pointer-events-auto w-[10vw] sm:w-[7vw] col-span-3 row-span-4 justify-self-start"
                     >
                         <img
                             className="w-full"
@@ -134,8 +143,8 @@ const Payments = () => {
                         />
                     </motion.div>
                     <motion.div
-                        style={{ y: y2 }}
-                        className="payCard pointer-events-none lg:pointer-events-auto w-[7vw] ml-[10vw] col-span-3 row-span-1 justify-self-center"
+                        style={{ y: paymentResponsive ? y2 : 0 }}
+                        className="payCard pointer-events-none lg:pointer-events-auto w-[10vw] sm:w-[7vw] ml-[10vw] col-span-3 row-span-1 justify-self-center"
                     >
                         <img className="w-full" src="/Images/MIR.svg" alt="" />
                     </motion.div>

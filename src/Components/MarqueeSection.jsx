@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import MarqueeText from "./MarqueeText";
 import Marquee from "react-fast-marquee";
 import { Link } from "react-router-dom";
@@ -18,6 +18,17 @@ const MarqueeSection = () => {
         target: marqueeMainRef,
         offset: ["start end", "end start"],
     });
+    const [marqueeResponsive, setmarqueeResponsive] = useState(
+        window.innerWidth >= 1023
+    );
+    useEffect(() => {
+        window.addEventListener("resize", () => {
+            setmarqueeResponsive(window.innerWidth >= 1023);
+        });
+        return () => {
+            window.removeEventListener("resize", () => {});
+        };
+    }, []);
     const y = useTransform(scrollYProgress, [0, 1], ["0", "12vw"]);
     const y2 = useTransform(scrollYProgress, [0, 1], ["0", "-10vw"]);
 
@@ -56,10 +67,10 @@ const MarqueeSection = () => {
     return (
         <div
             ref={marqueeMainRef}
-            className="w-full relative pt-[20vw] sm:pt-[10vw]"
+            className="w-full relative pt-[20vw] lg:pt-[10vw]"
         >
             <motion.div
-                style={{ y }}
+                style={{ y: marqueeResponsive ? y : 0 }}
                 // ref={floatingCard1}
                 className="flex flex-col-reverse items-start lg:flex-row lg:items-start gap-[5vw] sm:gap-[3vw] lg:gap-[5vw] pl-[4vw] pr-[10vw] mb-[-8vw] relative z-40"
             >
@@ -98,7 +109,7 @@ const MarqueeSection = () => {
                 </div>
             </div>
             <motion.div
-                style={{ y: y2 }}
+                style={{ y: marqueeResponsive ? y2 : 0 }}
                 // ref={floatingCard2}
                 className="pr-[4vw] w-[46%] lg:w-[33%] ml-auto mt-[-8vw] z-40 relative"
             >

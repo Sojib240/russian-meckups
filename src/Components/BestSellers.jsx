@@ -12,9 +12,9 @@ import { productContext } from "../Utils/Context";
 import { Link } from "react-router-dom";
 import { CartDataContext } from "../Utils/CartContext";
 
-const BestSellers = () => {
+const BestSellers = ({ openCart, setopenCart }) => {
     const [mockupsApiData] = useContext(productContext);
-    const [cart,setcart] = useContext(CartDataContext);
+    const [cart, setcart] = useContext(CartDataContext);
     //
     const [filterProduct, setfilterProduct] = useState([]);
     const topSeller = () => {
@@ -44,7 +44,7 @@ const BestSellers = () => {
         setcart([...cart, product]);
     };
     return (
-        <div className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] pt-28 sm:pt-[25vw] md:pt-[12vw]">
+        <div className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] pt-20 sm:pt-[25vw] md:pt-[12vw]">
             <h2 className="font-font5 text-[10vw] tracking-[-0.6vw] pb-4 sm:pb-[1vw] lg:pb-0">
                 the best sellers
             </h2>
@@ -95,7 +95,8 @@ const BestSellers = () => {
                                             />
                                         </Link>
                                         <button
-                                            onClick={() =>
+                                            onClick={() => {
+                                                setopenCart(true);
                                                 addToCart({
                                                     id,
                                                     image,
@@ -103,9 +104,9 @@ const BestSellers = () => {
                                                     title,
                                                     slug,
                                                     price,
-                                                })
-                                            }
-                                            className="border-t absolute bottom-0 left-0 w-full text-center font-font5 py-1 sm:py-2 md:py-3 lg:py-3 text-[12px] md:text-sm lg:text-base bg-[#D6DBE0] uppercase opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 hover:bg-[#FEE69D] cursor-pointer"
+                                                });
+                                            }}
+                                            className="border-t absolute bottom-0 left-0 w-full text-center font-font5 py-2 sm:py-2 md:py-2 lg:py-2 xl:py-2 2xl:py-3 text-[11px] md:text-[12px] lg:text-sm bg-[#D6DBE0] uppercase opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all hover:bg-[#FEE69D] duration-200 cursor-pointer"
                                         >
                                             add to cart
                                         </button>

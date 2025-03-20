@@ -14,22 +14,41 @@ import Empty from "./Components/Empty";
 import Information from "./Pages/Information";
 
 const App = () => {
+    const [openCart, setopenCart] = useState(false);
 
     return (
         <>
+            <ScrollToTop />
             <LenisSmoothScroll />
-            <NavBar />
+            <NavBar openCart={openCart} setopenCart={setopenCart} />
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route
+                    path="/"
+                    element={
+                        <Home openCart={openCart} setopenCart={setopenCart} />
+                    }
+                />
                 <Route
                     path="/product-category/:param/"
-                    element={<CategoryPage />}
+                    element={
+                        <CategoryPage
+                            openCart={openCart}
+                            setopenCart={setopenCart}
+                        />
+                    }
                 />
                 <Route path="/account/" element={<Account />} />
-                <Route path="/shop/:slug/:title/" element={<Details/>} />
+                <Route
+                    path="/shop/:slug/:title/"
+                    element={
+                        <Details
+                            openCart={openCart}
+                            setopenCart={setopenCart}
+                        />
+                    }
+                />
                 <Route path="/information/" element={<Information />} />
             </Routes>
-            <ScrollToTop />
             <Footer />
             {/* <Empty /> */}
         </>

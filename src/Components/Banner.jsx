@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import AnimatedTitle from "./Common/AnimatedTitle";
 
@@ -9,26 +9,35 @@ const Banner = () => {
         target: bannerRef,
         offset: ["start end", "end start"],
     });
+    const [bannerResponsive, setbannerResponsive] = useState(window.innerWidth >= 1023);
+    useEffect(() => {
+        window.addEventListener("resize", () => {
+            setbannerResponsive(window.innerWidth >= 1023);
+        });
+        return () => {
+            window.removeEventListener("resize", () => {});
+        };
+    }, []);
     const y = useTransform(scrollYProgress, [0, 1], ["-30%", "0%"]);
     return (
         <div
             ref={bannerRef}
-            className="w-full h-[160vh] mt-[18vw] overflow-hidden relative"
+            className="w-full h-auto md:h-auto lg:h-[80vw] xl:h-[80vw] mt-0 lg:mt-[18vw] overflow-hidden relative"
         >
-            <div className="w-full h-full overflow-hidden bg-amber-300">
+            <div className="w-full h-full overflow-hidden">
                 <motion.img
                     style={{ y }}
-                    className="w-full h-full object-cover scale-[1.13] origin-top"
+                    className="w-full h-full object-cover scale-[1.22] sm:scale-[1.2] xl:scale-[1.13] origin-top"
                     src="/Images/Banner-1-scaled.jpg"
                     alt=""
                 />
             </div>
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[#D6DBE0] text-center w-full pb-[5vw]">
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[#D6DBE0] text-center w-full pb-[20vw] sm:pb-[15vw] md:pb-[10vw] lg:pb-[5vw]">
                 <h3 className="text-[10vw] leading-none -tracking-[0.6vw] font-font5 font-bold">
                     Baikal Mockups <br />
                     Collection
                 </h3>
-                <div className="group mt-16 inline-block">
+                <div className="group mt-[5vw] md:mt-[4vw] lg:mt-[3vw] inline-block">
                     <Link to={"/product-category/all-mockups/"} className="leading-none px-8 py-3 border-[2px] group-hover:bg-white group-hover:text-black border-[#D6DBE0] block">
                         <AnimatedTitle text="Shop Collection" />
                     </Link>

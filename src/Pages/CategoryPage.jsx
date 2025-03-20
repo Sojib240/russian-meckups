@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { productContext } from "../Utils/Context";
 import { CartDataContext } from "../Utils/CartContext";
 
-const CategoryPage = () => {
+const CategoryPage = ({ openCart, setopenCart }) => {
     const [cart, setcart] = useContext(CartDataContext);
     const [productsApiData] = useContext(productContext);
     const { param } = useParams();
@@ -75,7 +75,7 @@ const CategoryPage = () => {
                                             />
                                         </Link>
                                         <button
-                                            onClick={() =>
+                                            onClick={() => {
                                                 addToCart({
                                                     id,
                                                     image,
@@ -83,9 +83,10 @@ const CategoryPage = () => {
                                                     title,
                                                     slug,
                                                     price,
-                                                })
-                                            }
-                                            className="border-t absolute bottom-0 left-0 w-full text-center font-font5 py-1 sm:py-2 md:py-3 lg:py-3 text-[12px] md:text-sm lg:text-base bg-[#D6DBE0] uppercase opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all hover:bg-[#FEE69D] duration-200 cursor-pointer"
+                                                });
+                                                setopenCart(true);
+                                            }}
+                                            className="border-t absolute bottom-0 left-0 w-full text-center font-font5 py-2 sm:py-2 md:py-2 lg:py-2 xl:py-2 2xl:py-3 text-[11px] md:text-[12px] lg:text-sm bg-[#D6DBE0] uppercase opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all hover:bg-[#FEE69D] duration-200 cursor-pointer"
                                         >
                                             add to cart
                                         </button>

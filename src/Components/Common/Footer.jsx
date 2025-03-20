@@ -33,6 +33,18 @@ const Footer = () => {
         });
     }, [imageLoaded, location]);
 
+    const [footerResponsive, setfooterResponsive] = useState(
+        window.innerWidth >= 1023
+    );
+    useEffect(() => {
+        window.addEventListener("resize", () => {
+            setfooterResponsive(window.innerWidth >= 1023);
+        });
+        return () => {
+            window.removeEventListener("resize", () => {});
+        };
+    }, []);
+
     // useGSAP(() => {
     //     let footerTimeline = gsap.timeline({
     //         scrollTrigger: {
@@ -69,18 +81,19 @@ const Footer = () => {
     // }, []); // Ensure `scrollEnd` updates dynamically
     const { scrollYProgress } = useScroll({
         target: footerImageRef,
-        offset: ["start end", "end start"],
+        // offset: ["start end", "end start"],
+        offset: [`start end`, `end ${scrollEnd}px`],
     });
     // useMotionValue(scrollYProgress,'change',(latest)=>{
     //     console.log(latest);
-        
+
     // })
     const y = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
-    const y2 = useTransform(scrollYProgress, [0.5, 0.9], ["50%", "0%"]);
+    const y2 = useTransform(scrollYProgress, [0.5, 1], ["50%", "0%"]);
 
     return (
         <div className="overflow-hidden">
-            <div className="pt-26 sm:pt-[22vw] md:pt-[20vw] lg:pt-[18vw] xl:pt-[13vw] bg-[#D6DBE0] z-50 relative"></div>
+            <div className="pt-26 sm:pt-[22vw] md:pt-[10vw] lg:pt-[18vw] xl:pt-[13vw] bg-[#D6DBE0] z-50 relative"></div>
             <div
                 // onLoad={() => handleLoadedFunction()}
                 ref={footerImageRef}
@@ -95,15 +108,13 @@ const Footer = () => {
                         present authentic
                     </h3>
                 </div>
-                <div
-                    className="mt-5 sm:mt-[6vw]"
-                >
+                <div className="mt-5 sm:mt-[6vw]">
                     <motion.div
                         style={{
-                            y,
+                            y: footerResponsive ? y : 0,
                         }}
                         // ref={footerCardRef}
-                        className="w-[60%] sm:w-[46%] lg:w-[30%] mx-auto z-40 relative"
+                        className="w-[50%] sm:w-[46%] lg:w-[30%] mx-auto z-40 relative mb-16 sm:mb-20 lg:mb-0"
                     >
                         <Link
                             to={`/product-category/all-mockups/`}
@@ -129,7 +140,7 @@ const Footer = () => {
                 className="bg-transparent lg:block hidden"
             ></div>
             <motion.div
-                style={{ y: y2 }}
+                style={{ y: footerResponsive ? y2 : 0 }}
                 ref={footerBottomRef}
                 className="w-full lg:fixed lg:bottom-0 footer-bottom py-5 xl:pb-[1vw] px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] z-30"
             >
@@ -163,66 +174,102 @@ const Footer = () => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-8 md:gap-[2vw] w-full">
                             <div className="col-span-1 flex flex-col gap-3 md:gap-6">
                                 <div>
-                                    <Link to={'/product-category/all-mockups/'} className="inline-block">
+                                    <Link
+                                        to={"/product-category/all-mockups/"}
+                                        className="inline-block"
+                                    >
                                         <AnimatedTitle text={"shop all"} />
                                     </Link>
                                 </div>
                                 <div>
-                                    <Link to={'/product-category/billboards/'} className="inline-block">
+                                    <Link
+                                        to={"/product-category/billboards/"}
+                                        className="inline-block"
+                                    >
                                         <AnimatedTitle text={"billboards"} />
                                     </Link>
                                 </div>
                                 <div>
-                                    <Link to={'/product-category/posters/'} className="inline-block">
+                                    <Link
+                                        to={"/product-category/posters/"}
+                                        className="inline-block"
+                                    >
                                         <AnimatedTitle text={"posters"} />
                                     </Link>
                                 </div>
                                 <div>
-                                    <Link to={'/product-category/signs/'} className="inline-block">
+                                    <Link
+                                        to={"/product-category/signs/"}
+                                        className="inline-block"
+                                    >
                                         <AnimatedTitle text={"signs"} />
                                     </Link>
                                 </div>
                                 <div className="">
-                                    <Link to={'/product-category/pylons/'} className="inline-block">
+                                    <Link
+                                        to={"/product-category/pylons/"}
+                                        className="inline-block"
+                                    >
                                         <AnimatedTitle text={"pylons"} />
                                     </Link>
                                 </div>
                                 <div className="">
-                                    <Link to={'/product-category/bus-stops/'} className="inline-block">
+                                    <Link
+                                        to={"/product-category/bus-stops/"}
+                                        className="inline-block"
+                                    >
                                         <AnimatedTitle text={"bus stops"} />
                                     </Link>
                                 </div>
                                 <div className="">
-                                    <Link to={'/product-category/facades/'} className="inline-block">
+                                    <Link
+                                        to={"/product-category/facades/"}
+                                        className="inline-block"
+                                    >
                                         <AnimatedTitle text={"facades"} />
                                     </Link>
                                 </div>
                             </div>
                             <div className="col-span-1 flex flex-col gap-3 md:gap-6">
                                 <div className="">
-                                    <Link to={'/information/'} className="inline-block">
+                                    <Link
+                                        to={"/information/"}
+                                        className="inline-block"
+                                    >
                                         <AnimatedTitle text={"FAQ"} />
                                     </Link>
                                 </div>
                                 <div className="">
-                                    <Link to={'/information/'} className="inline-block">
+                                    <Link
+                                        to={"/information/"}
+                                        className="inline-block"
+                                    >
                                         <AnimatedTitle text={"Refund Policy"} />
                                     </Link>
                                 </div>
                                 <div className="">
-                                    <Link to={'/information/'} className="inline-block">
+                                    <Link
+                                        to={"/information/"}
+                                        className="inline-block"
+                                    >
                                         <AnimatedTitle text={"License terms"} />
                                     </Link>
                                 </div>
                                 <div className="">
-                                    <Link to={'/information/'} className="inline-block">
+                                    <Link
+                                        to={"/information/"}
+                                        className="inline-block"
+                                    >
                                         <AnimatedTitle
                                             text={"Privacy policy"}
                                         />
                                     </Link>
                                 </div>
                                 <div className="">
-                                    <Link to={'/information/'} className="inline-block">
+                                    <Link
+                                        to={"/information/"}
+                                        className="inline-block"
+                                    >
                                         <AnimatedTitle text={"info"} />
                                     </Link>
                                 </div>
@@ -235,21 +282,33 @@ const Footer = () => {
                                         </Link>
                                     </div>
                                     <div className="">
-                                        <a href="https://www.instagram.com/accounts/login/?next=%2Frussianmockups%2F&source=omni_redirect" target="_blank"  className="inline-block">
+                                        <a
+                                            href="https://www.instagram.com/accounts/login/?next=%2Frussianmockups%2F&source=omni_redirect"
+                                            target="_blank"
+                                            className="inline-block"
+                                        >
                                             <AnimatedTitle
                                                 text={"#russianmockups"}
                                             />
                                         </a>
                                     </div>
                                     <div className="">
-                                        <a href="https://www.instagram.com/#russianmockups" target="_blank" className="inline-block">
+                                        <a
+                                            href="https://www.instagram.com/#russianmockups"
+                                            target="_blank"
+                                            className="inline-block"
+                                        >
                                             <AnimatedTitle
                                                 text={"hey@russianmockups.shop"}
                                             />
                                         </a>
                                     </div>
                                     <div className="">
-                                        <a href="https://arcr.ru/" target="_blank" className="inline-block">
+                                        <a
+                                            href="https://arcr.ru/"
+                                            target="_blank"
+                                            className="inline-block"
+                                        >
                                             <AnimatedTitle
                                                 text={"made in ARCR"}
                                             />

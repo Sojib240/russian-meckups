@@ -14,8 +14,9 @@ import { FreeMode, Thumbs, Zoom } from "swiper/modules";
 import { productContext } from "../Utils/Context";
 import { CartDataContext } from "../Utils/CartContext";
 
-const Details = () => {
-    const [detailsPageAccordianOpen, setDetailsPageAccordianOpen] = useState(false);
+const Details = ({ openCart, setopenCart }) => {
+    const [detailsPageAccordianOpen, setDetailsPageAccordianOpen] =
+        useState(false);
     const [productsApiData] = useContext(productContext);
     const [cart, setcart] = useContext(CartDataContext);
     const { title } = useParams();
@@ -54,11 +55,11 @@ const Details = () => {
         }
         setcart([...cart, product]);
     };
-    const accordians={
+    const accordians = {
         accordianDatas: `
         
-        `
-    }
+        `,
+    };
     return (
         <div className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] bg-[#D6DBE0] relative z-50">
             <div className="flex flex-col lg:flex-row gap-[2vw] relative">
@@ -174,17 +175,23 @@ const Details = () => {
                     <div className="border-t border-[#565759] mb-5 sm:mb-8 md:mb-10 lg:mb-16">
                         <div className="pt-2 sm:pt-3 md:pt-3 lg:pt-4">
                             <button
-                                onClick={() => setDetailsPageAccordianOpen(!detailsPageAccordianOpen)}
+                                onClick={() =>
+                                    setDetailsPageAccordianOpen(
+                                        !detailsPageAccordianOpen
+                                    )
+                                }
                                 className="flex items-center justify-between w-full mb-8 lg:mb-5 cursor-pointer"
                             >
-                                <span className="block uppercase text-sm font-font5">
+                                <span className="block uppercase text-[12px] sm:text-sm font-font5">
                                     About commercial license
                                 </span>
-                                <div className="w-4 h-4 relative">
+                                <div className="w-3 sm:w-4 h-3 sm:h-4 relative">
                                     <span className="w-full h-[1px] bg-black block absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 rounded-full" />
                                     <span
                                         className={`h-[1px] absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition-all ease-in-out duration-300 bg-black block rotate-90 rounded-full ${
-                                            detailsPageAccordianOpen ? "w-0" : "w-full"
+                                            detailsPageAccordianOpen
+                                                ? "w-0"
+                                                : "w-full"
                                         }`}
                                     />
                                 </div>
@@ -318,16 +325,30 @@ const Details = () => {
                         </div>
                     </div>
                     {/*  */}
-                    {singleProduct && singleProduct.map(({id,image,image2,slug,title,price}) => {
-                        return (
-                            <button key={id}
-                                onClick={() => addToCart({id,image,image2,slug,title,price})}
-                                className="uppercase font-font5 text-[12px] sm:text-sm py-3 sm:py-4 px-5 text-center border-[2px] w-full block hover:bg-[#000] hover:text-[#fff] border-black transition-all duration-150"
-                            >
-                                add to cart
-                            </button>
-                        );
-                    })}
+                    {singleProduct &&
+                        singleProduct.map(
+                            ({ id, image, image2, slug, title, price }) => {
+                                return (
+                                    <button
+                                        key={id}
+                                        onClick={() => {
+                                            addToCart({
+                                                id,
+                                                image,
+                                                image2,
+                                                slug,
+                                                title,
+                                                price,
+                                            }),
+                                                setopenCart(true);
+                                        }}
+                                        className="uppercase font-font5 text-[12px] sm:text-sm py-3 sm:py-4 px-5 text-center border-[2px] w-full block hover:bg-[#000] hover:text-[#fff] border-black transition-all duration-150 cursor-pointer"
+                                    >
+                                        add to cart
+                                    </button>
+                                );
+                            }
+                        )}
                 </div>
             </div>
             <div className=" text-xl sm:text-2xl lg:text-[2vw] font-font5 mt-24 xl:mt-[7vw] 2xl:mt-[6vw]">

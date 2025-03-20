@@ -153,8 +153,8 @@ const AllCategories = () => {
     //     });
     // }, []);
     return (
-        <div className="w-full px-4 sm:px-[3vw] md:px-[4vw] lg:px-[5vw] pt-16 sm:pt-[4.5vw] overflow-hidden pb-18 sm:pb-[11vw] md:pb-[9vw] lg:pb-[9.5vw]">
-            <h4 className="text-5xl sm:text-[10vw] tracking-[-0.6vw] font-font5 text-center">
+        <div className="w-full px-4 sm:px-[3vw] md:px-[4vw] lg:px-[5vw] pt-10 sm:pt-20 md:pt-[8vw] lg:pt-[4.5vw] overflow-hidden pb-14 sm:pb-[11vw] md:pb-[9vw] lg:pb-[9.5vw]">
+            <h4 className="text-6xl sm:text-[10vw] tracking-[-0.6vw] font-font5 text-center">
                 all
             </h4>
             <div
@@ -182,7 +182,7 @@ const AllCategories = () => {
                                 ref={(el) => (chieldRef.current[id] = el)}
                                 className="relative card-text"
                             >
-                                <h4 className="cardText relative z-40 pointer-events-none  pl-0 sm:px-[2vw] py-[1vw]">
+                                <h4 className="cardText relative z-40 pointer-events-none  pl-0 px-0 sm:px-[3vw] lg:px-[2vw] py-[2vw] xl:py-[1vw]">
                                     {title}
                                 </h4>
                                 <div className="card-image w-[300px] h-[320px] hidden absolute top-1/2 pointer-events-none -translate-y-1/2 left-1/2 -translate-x-1/2">
