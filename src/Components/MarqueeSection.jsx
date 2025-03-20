@@ -5,53 +5,74 @@ import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { useGSAP } from "@gsap/react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const MarqueeSection = () => {
-    gsap.registerPlugin(ScrollTrigger);
-    const floatingCard1 = useRef();
-    const floatingCard2 = useRef();
-    let marqueeBigScreenTimeline;
+    // gsap.registerPlugin(ScrollTrigger);
+    // const floatingCard1 = useRef();
+    // const floatingCard2 = useRef();
+    // let marqueeBigScreenTimeline;
+    const marqueeMainRef = useRef();
+    //
+    const { scrollYProgress } = useScroll({
+        target: marqueeMainRef,
+        offset: ["start end", "end start"],
+    });
+    const y = useTransform(scrollYProgress, [0, 1], ["0", "12vw"]);
+    const y2 = useTransform(scrollYProgress, [0, 1], ["0", "-10vw"]);
 
-    useGSAP(() => {
-        ScrollTrigger.matchMedia({
-            "(min-width:1025px)": () => {
-                marqueeBigScreenTimeline = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: floatingCard1.current,
-                        start: "top 40%",
-                        end: "bottom top",
-                        scrub: true,
-                    },
-                });
-                marqueeBigScreenTimeline
-                    .to(
-                        floatingCard1.current,
-                        {
-                            marginBottom: "-20vw",
-                            ease: "none",
-                        },
-                        "c"
-                    )
-                    .to(
-                        floatingCard2.current,
-                        {
-                            marginTop: "-22vw",
-                            ease: "none",
-                        },
-                        "c"
-                    );
-            },
-        });
-    }, []);
+    // useGSAP(() => {
+    //     ScrollTrigger.matchMedia({
+    //         "(min-width:1025px)": () => {
+    //             marqueeBigScreenTimeline = gsap.timeline({
+    //                 scrollTrigger: {
+    //                     trigger: floatingCard1.current,
+    //                     start: "top 40%",
+    //                     end: "bottom -20%",
+    //                     scrub: true,
+    //                     // markers:true
+    //                 },
+    //             });
+    //             marqueeBigScreenTimeline
+    //                 .to(
+    //                     floatingCard1.current,
+    //                     {
+    //                         y: "10vw",
+    //                         ease: "none",
+    //                     },
+    //                     "c"
+    //                 )
+    //                 .to(
+    //                     floatingCard2.current,
+    //                     {
+    //                         y: "-10vw",
+    //                         ease: "none",
+    //                     },
+    //                     "c"
+    //                 );
+    //         },
+    //     });
+    // }, []);
     return (
-        <div className="w-full relative pt-[20vw] sm:pt-[10vw]">
-            <div
-                ref={floatingCard1}
-                className="flex flex-col-reverse items-start lg:flex-row lg:items-start gap-[5vw] sm:gap-[3vw] lg:gap-[5vw] pl-[4vw] pr-[10vw] mb-[-10vw] relative z-40"
+        <div
+            ref={marqueeMainRef}
+            className="w-full relative pt-[20vw] sm:pt-[10vw]"
+        >
+            <motion.div
+                style={{ y }}
+                // ref={floatingCard1}
+                className="flex flex-col-reverse items-start lg:flex-row lg:items-start gap-[5vw] sm:gap-[3vw] lg:gap-[5vw] pl-[4vw] pr-[10vw] mb-[-8vw] relative z-40"
             >
-                <Link to={`/product-category/all-mockups/`} className="p-[6px] sm:p-[1vw] bg-[#D6DBE0] inline-block border w-[46%] lg:w-[33%] transition-all duration-200 hover:bg-[#FEE69D]">
+                <Link
+                    to={`/product-category/all-mockups/`}
+                    className="p-[6px] sm:p-[1vw] bg-[#D6DBE0] inline-block border w-[46%] lg:w-[33%] transition-all duration-200 hover:bg-[#FEE69D]"
+                >
                     <div className="w-full">
-                        <img className="w-full" src="/Images/shop-1.jpg" alt="" />
+                        <img
+                            className="w-full"
+                            src="/Images/shop-1.jpg"
+                            alt=""
+                        />
                     </div>
                     <p className="pt-2 sm:pt-[1.2vw] text-[11px] sm:text-sm md:text-base font-font5 uppercase text-center">
                         shop all
@@ -63,7 +84,7 @@ const MarqueeSection = () => {
                     and stunning designs for Russian brands in a more authentic
                     and truthful environment.
                 </h4>
-            </div>
+            </motion.div>
             <div className="w-full relative overflow-hidden">
                 <img
                     className="w-full"
@@ -76,19 +97,27 @@ const MarqueeSection = () => {
                     </Marquee>
                 </div>
             </div>
-            <div
-                ref={floatingCard2}
-                className="pr-[4vw] w-[46%] lg:w-[33%] ml-auto mt-[-12vw] z-40 relative"
+            <motion.div
+                style={{ y: y2 }}
+                // ref={floatingCard2}
+                className="pr-[4vw] w-[46%] lg:w-[33%] ml-auto mt-[-8vw] z-40 relative"
             >
-                <Link to={`/product-category/all-mockups/`} className="p-[6px] sm:p-[1vw] bg-[#D6DBE0] inline-block border w-full transition-all duration-200 hover:bg-[#FEE69D]">
+                <Link
+                    to={`/product-category/all-mockups/`}
+                    className="p-[6px] sm:p-[1vw] bg-[#D6DBE0] inline-block border w-full transition-all duration-200 hover:bg-[#FEE69D]"
+                >
                     <div className="w-full">
-                        <img className="w-full" src="/Images/shop-2.jpg" alt="" />
+                        <img
+                            className="w-full"
+                            src="/Images/shop-2.jpg"
+                            alt=""
+                        />
                     </div>
                     <p className="pt-2 sm:pt-[1.2vw] text-[11px] sm:text-sm md:text-base font-font5 uppercase text-center">
                         shop all
                     </p>
                 </Link>
-            </div>
+            </motion.div>
         </div>
     );
 };

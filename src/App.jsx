@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Home from "./Pages/Home";
 import NavBar from "./Components/Common/NavBar";
 import LenisSmoothScroll from "./Utils/LenisSmoothScroll";
@@ -10,8 +10,11 @@ import Footer from "./Components/Common/Footer";
 import ScrollToTop from "./Components/Common/ScrollToTop";
 import CategoryPage from "./Pages/CategoryPage";
 import Account from "./Pages/Account";
+import Empty from "./Components/Empty";
+import Information from "./Pages/Information";
 
 const App = () => {
+
     return (
         <>
             <LenisSmoothScroll />
@@ -23,10 +26,12 @@ const App = () => {
                     element={<CategoryPage />}
                 />
                 <Route path="/account/" element={<Account />} />
-                <Route path="/shop/:slug/:title/" element={<Details />} />
+                <Route path="/shop/:slug/:title/" element={<Details/>} />
+                <Route path="/information/" element={<Information />} />
             </Routes>
             <ScrollToTop />
             <Footer />
+            {/* <Empty /> */}
         </>
     );
 };

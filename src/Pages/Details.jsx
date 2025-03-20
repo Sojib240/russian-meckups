@@ -15,6 +15,7 @@ import { productContext } from "../Utils/Context";
 import { CartDataContext } from "../Utils/CartContext";
 
 const Details = () => {
+    const [detailsPageAccordianOpen, setDetailsPageAccordianOpen] = useState(false);
     const [productsApiData] = useContext(productContext);
     const [cart, setcart] = useContext(CartDataContext);
     const { title } = useParams();
@@ -37,7 +38,7 @@ const Details = () => {
             singleProductId();
         }
     }, [productsApiData, title]);
-    const [accordianOpen, setaccordianOpen] = useState(false);
+
     const [thumbsSwiper, setThumbsSwiper] = useState();
     const [swiperTotalSlide, setSwiperTotalSlide] = useState();
     // add to cart
@@ -53,6 +54,11 @@ const Details = () => {
         }
         setcart([...cart, product]);
     };
+    const accordians={
+        accordianDatas: `
+        
+        `
+    }
     return (
         <div className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] bg-[#D6DBE0] relative z-50">
             <div className="flex flex-col lg:flex-row gap-[2vw] relative">
@@ -168,7 +174,7 @@ const Details = () => {
                     <div className="border-t border-[#565759] mb-5 sm:mb-8 md:mb-10 lg:mb-16">
                         <div className="pt-2 sm:pt-3 md:pt-3 lg:pt-4">
                             <button
-                                onClick={() => setaccordianOpen(!accordianOpen)}
+                                onClick={() => setDetailsPageAccordianOpen(!detailsPageAccordianOpen)}
                                 className="flex items-center justify-between w-full mb-8 lg:mb-5 cursor-pointer"
                             >
                                 <span className="block uppercase text-sm font-font5">
@@ -178,14 +184,14 @@ const Details = () => {
                                     <span className="w-full h-[1px] bg-black block absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 rounded-full" />
                                     <span
                                         className={`h-[1px] absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition-all ease-in-out duration-300 bg-black block rotate-90 rounded-full ${
-                                            accordianOpen ? "w-0" : "w-full"
+                                            detailsPageAccordianOpen ? "w-0" : "w-full"
                                         }`}
                                     />
                                 </div>
                             </button>
                             <div
                                 className={`grid overflow-hidden transition-all duration-300 ease-in-out ${
-                                    accordianOpen
+                                    detailsPageAccordianOpen
                                         ? "grid-rows-[1fr]"
                                         : "grid-rows-[0fr]"
                                 }`}

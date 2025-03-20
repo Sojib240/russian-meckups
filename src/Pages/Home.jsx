@@ -6,7 +6,6 @@ import NewOnes from "../Components/NewOnes";
 import Payments from "../Components/Payments";
 import MarqueeSection from "../Components/MarqueeSection";
 import AllCategories from "../Components/AllCategories";
-
 const Home = () => {
     document.title = "Russian Mockups";
 
@@ -18,7 +17,6 @@ const Home = () => {
             <NewOnes />
             <Payments />
             <MarqueeSection />
-            {/* <Empty /> */}
         </div>
     );
 };
