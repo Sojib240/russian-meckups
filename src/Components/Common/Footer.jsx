@@ -163,66 +163,66 @@ const Footer = () => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-8 md:gap-[2vw] w-full">
                             <div className="col-span-1 flex flex-col gap-3 md:gap-6">
                                 <div>
-                                    <Link className="inline-block">
+                                    <Link to={'/product-category/all-mockups/'} className="inline-block">
                                         <AnimatedTitle text={"shop all"} />
                                     </Link>
                                 </div>
                                 <div>
-                                    <Link className="inline-block">
+                                    <Link to={'/product-category/billboards/'} className="inline-block">
                                         <AnimatedTitle text={"billboards"} />
                                     </Link>
                                 </div>
                                 <div>
-                                    <Link className="inline-block">
+                                    <Link to={'/product-category/posters/'} className="inline-block">
                                         <AnimatedTitle text={"posters"} />
                                     </Link>
                                 </div>
                                 <div>
-                                    <Link className="inline-block">
+                                    <Link to={'/product-category/signs/'} className="inline-block">
                                         <AnimatedTitle text={"signs"} />
                                     </Link>
                                 </div>
                                 <div className="">
-                                    <Link className="inline-block">
+                                    <Link to={'/product-category/pylons/'} className="inline-block">
                                         <AnimatedTitle text={"pylons"} />
                                     </Link>
                                 </div>
                                 <div className="">
-                                    <Link className="inline-block">
+                                    <Link to={'/product-category/bus-stops/'} className="inline-block">
                                         <AnimatedTitle text={"bus stops"} />
                                     </Link>
                                 </div>
                                 <div className="">
-                                    <Link className="inline-block">
+                                    <Link to={'/product-category/facades/'} className="inline-block">
                                         <AnimatedTitle text={"facades"} />
                                     </Link>
                                 </div>
                             </div>
                             <div className="col-span-1 flex flex-col gap-3 md:gap-6">
                                 <div className="">
-                                    <Link className="inline-block">
+                                    <Link to={'/information/'} className="inline-block">
                                         <AnimatedTitle text={"FAQ"} />
                                     </Link>
                                 </div>
                                 <div className="">
-                                    <Link className="inline-block">
+                                    <Link to={'/information/'} className="inline-block">
                                         <AnimatedTitle text={"Refund Policy"} />
                                     </Link>
                                 </div>
                                 <div className="">
-                                    <Link className="inline-block">
+                                    <Link to={'/information/'} className="inline-block">
                                         <AnimatedTitle text={"License terms"} />
                                     </Link>
                                 </div>
                                 <div className="">
-                                    <Link className="inline-block">
+                                    <Link to={'/information/'} className="inline-block">
                                         <AnimatedTitle
                                             text={"Privacy policy"}
                                         />
                                     </Link>
                                 </div>
                                 <div className="">
-                                    <Link className="inline-block">
+                                    <Link to={'/information/'} className="inline-block">
                                         <AnimatedTitle text={"info"} />
                                     </Link>
                                 </div>
@@ -235,25 +235,25 @@ const Footer = () => {
                                         </Link>
                                     </div>
                                     <div className="">
-                                        <Link className="inline-block">
+                                        <a href="https://www.instagram.com/accounts/login/?next=%2Frussianmockups%2F&source=omni_redirect" target="_blank"  className="inline-block">
                                             <AnimatedTitle
                                                 text={"#russianmockups"}
                                             />
-                                        </Link>
+                                        </a>
                                     </div>
                                     <div className="">
-                                        <Link className="inline-block">
+                                        <a href="https://www.instagram.com/#russianmockups" target="_blank" className="inline-block">
                                             <AnimatedTitle
                                                 text={"hey@russianmockups.shop"}
                                             />
-                                        </Link>
+                                        </a>
                                     </div>
                                     <div className="">
-                                        <Link className="inline-block">
+                                        <a href="https://arcr.ru/" target="_blank" className="inline-block">
                                             <AnimatedTitle
                                                 text={"made in ARCR"}
                                             />
-                                        </Link>
+                                        </a>
                                     </div>
                                 </div>
                                 <div className="w-full">

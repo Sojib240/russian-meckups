@@ -284,7 +284,7 @@ const Context = (props) => {
                 image: "/Images/Products/MSC-039-1.jpg",
                 image2: "/Images/Products/MSC-039-2.jpg",
                 slug: ["all-mockups", "pylons"],
-                newOnes: true,
+                newOnes: null,
                 bestSeller: null,
                 price: 999,
                 amount: 1,
@@ -295,13 +295,12 @@ const Context = (props) => {
                 image: "/Images/Products/MSC-040-1.jpg",
                 image2: "/Images/Products/MSC-040-2.jpg",
                 slug: ["all-mockups", "facades"],
-                newOnes: true,
+                newOnes: null,
                 bestSeller: null,
                 price: 999,
                 amount: 1,
                 title: "msc-040",
             },
-            // 
             {
                 id: 24,
                 image: "/Images/Products/BKL-001-1.jpg",
@@ -412,7 +411,6 @@ const Context = (props) => {
                 amount: 1,
                 title: "bkl-010",
             },
-            // 
             {
                 id: 34,
                 image: "/Images/Products/MSC-017-1.jpg",

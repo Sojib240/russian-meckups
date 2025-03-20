@@ -12,7 +12,7 @@ import {
     useTransform,
 } from "framer-motion";
 
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
     // const cardRef = useRef(null);
