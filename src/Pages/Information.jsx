@@ -23,7 +23,7 @@ const Information = () => {
                                     From which countries can I purchase the
                                     product?
                                 </span>
-                                <div className="w-4 h-4 relative">
+                                <div className="w-3 sm:w-4 h-3 sm:h-4 relative">
                                     <span className="w-full h-[1px] bg-black block absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 rounded-full" />
                                     <span
                                         className={`h-[1px] absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition-all ease-in-out duration-300 bg-black block rotate-90 rounded-full ${
@@ -66,7 +66,7 @@ const Information = () => {
                                 <span className="block uppercase text-sm font-font5">
                                 Do I need to create an account to make a purchase?
                                 </span>
-                                <div className="w-4 h-4 relative">
+                                <div className="w-3 sm:w-4 h-3 sm:h-4 relative">
                                     <span className="w-full h-[1px] bg-black block absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 rounded-full" />
                                     <span
                                         className={`h-[1px] absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition-all ease-in-out duration-300 bg-black block rotate-90 rounded-full ${
@@ -99,7 +99,7 @@ const Information = () => {
                                     Can I use these mockups for commercial
                                     projects?
                                 </span>
-                                <div className="w-4 h-4 relative">
+                                <div className="w-3 sm:w-4 h-3 sm:h-4 relative">
                                     <span className="w-full h-[1px] bg-black block absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 rounded-full" />
                                     <span
                                         className={`h-[1px] absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition-all ease-in-out duration-300 bg-black block rotate-90 rounded-full ${
@@ -133,7 +133,7 @@ const Information = () => {
                                 <span className="block uppercase text-sm font-font5">
                                 How do I receive the download files after making a purchase?
                                 </span>
-                                <div className="w-4 h-4 relative">
+                                <div className="w-3 sm:w-4 h-3 sm:h-4 relative">
                                     <span className="w-full h-[1px] bg-black block absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 rounded-full" />
                                     <span
                                         className={`h-[1px] absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition-all ease-in-out duration-300 bg-black block rotate-90 rounded-full ${
@@ -165,7 +165,7 @@ const Information = () => {
                                 <span className="block uppercase text-sm font-font5">
                                 I did not receive the e-mail after the purchase
                                 </span>
-                                <div className="w-4 h-4 relative">
+                                <div className="w-3 sm:w-4 h-3 sm:h-4 relative">
                                     <span className="w-full h-[1px] bg-black block absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 rounded-full" />
                                     <span
                                         className={`h-[1px] absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition-all ease-in-out duration-300 bg-black block rotate-90 rounded-full ${

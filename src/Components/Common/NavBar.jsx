@@ -171,7 +171,7 @@ const NavBar = ({ openCart, setopenCart }) => {
                 </nav>
                 {/* mobile */}
                 <div
-                    className={`gap-5 leading-none flex flex-col fixed top-[56px] px-3 sm:px-[4vw] md:px-[3vw] lg:px-[0.8vw] transition-all duration-300 left-0 origin-top border-b bg-[#D6DBE0] z-[999] w-full h-[auto] py-3 ${
+                    className={`gap-3 sm:gap-5 leading-none flex flex-col fixed top-[55px] md:top-[57px] px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] transition-all duration-300 left-0 origin-top border-b bg-[#D6DBE0] z-[999] w-full h-[auto] pb-3 pt-6 ${
                         menu
                             ? "translate-y-[0] visible opacity-100"
                             : "translate-y-[20%] invisible opacity-0"
@@ -182,7 +182,7 @@ const NavBar = ({ openCart, setopenCart }) => {
                             return (
                                 <Link
                                     key={id}
-                                    className="block border-b pb-4 pt-2 border-[#C5CACE]"
+                                    className="block border-b pb-3 sm:pb-4 border-[#C5CACE]"
                                     onClick={() => setmenu(false)}
                                     to={`/product-category/${param}/`}
                                 >
@@ -195,7 +195,7 @@ const NavBar = ({ openCart, setopenCart }) => {
                     <Link
                         onClick={() => setmenu(false)}
                         to={"/account/"}
-                        className="block pb-2"
+                        className="block pb-1"
                     >
                         <AnimatedTitle text={"account"} />
                     </Link>

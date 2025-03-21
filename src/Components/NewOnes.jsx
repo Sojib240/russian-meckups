@@ -12,7 +12,7 @@ import { productContext } from "../Utils/Context";
 import { Link } from "react-router-dom";
 import { CartDataContext } from "../Utils/CartContext";
 
-const NewOnes = ({openCart, setopenCart}) => {
+const NewOnes = ({ openCart, setopenCart }) => {
     const [mockupsApiData] = useContext(productContext);
     const [cart, setcart] = useContext(CartDataContext);
     //
@@ -69,7 +69,7 @@ const NewOnes = ({openCart, setopenCart}) => {
                     modules={[FreeMode]}
                 >
                     {newFilterProduct.map(
-                        ({ id, image, image2, title, slug,price }) => {
+                        ({ id, image, image2, title, slug, price }) => {
                             return (
                                 <SwiperSlide
                                     key={id}
@@ -94,7 +94,7 @@ const NewOnes = ({openCart, setopenCart}) => {
                                             />
                                         </Link>
                                         <button
-                                            onClick={() =>{
+                                            onClick={() => {
                                                 setopenCart(true);
                                                 addToCart({
                                                     id,
@@ -103,11 +103,14 @@ const NewOnes = ({openCart, setopenCart}) => {
                                                     title,
                                                     slug,
                                                     price,
-                                                })
+                                                });
                                             }}
                                             className="border-t absolute bottom-0 left-0 w-full text-center font-font5 py-2 sm:py-2 md:py-2 lg:py-2 xl:py-2 2xl:py-3 text-[11px] md:text-[12px] lg:text-sm bg-[#D6DBE0] uppercase opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all hover:bg-[#FEE69D] duration-200 cursor-pointer"
                                         >
-                                            add to cart
+                                            <div className="relative inline-block">
+                                                <span>add to cart</span>
+                                                <span className="absolute bottom-0 left-0 w-full h-[1px] bg-black scale-x-0 origin-right transition-transform duration-500 ease-in-out group-hover:scale-x-100 group-hover:origin-left"></span>
+                                            </div>
                                         </button>
                                     </div>
                                     <div className="font-font4 pt-2 sm:mt-[0.4vw]">

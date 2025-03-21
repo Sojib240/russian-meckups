@@ -178,19 +178,14 @@ const AllCategories = () => {
                                 key={id}
                                 to={direction}
                                 data-id={id}
-                                // ref={cardTextRef}
                                 ref={(el) => (chieldRef.current[id] = el)}
-                                className="relative card-text"
+                                className="relative card-text group pl-0 px-0 sm:px-[3vw] lg:px-[2vw] py-[2vw] xl:py-[1vw]"
                             >
-                                <h4 className="cardText relative z-40 pointer-events-none  pl-0 px-0 sm:px-[3vw] lg:px-[2vw] py-[2vw] xl:py-[1vw]">
+                                <div className="inline-block relative">
+                                <span className="block z-40 pb-1">
                                     {title}
-                                </h4>
-                                <div className="card-image w-[300px] h-[320px] hidden absolute top-1/2 pointer-events-none -translate-y-1/2 left-1/2 -translate-x-1/2">
-                                    <img
-                                        className="w-full h-full object-cover"
-                                        src={image}
-                                        alt=""
-                                    />
+                                </span>
+                                <span className="absolute bottom-0 left-0 w-full h-[1px] bg-black scale-x-0 origin-right transition-transform duration-500 ease-out group-hover:scale-x-100 group-hover:origin-left"></span>
                                 </div>
                             </Link>
                         );

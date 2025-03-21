@@ -22,17 +22,17 @@ const Banner = () => {
     return (
         <div
             ref={bannerRef}
-            className="w-full h-auto md:h-auto lg:h-[80vw] xl:h-[80vw] mt-0 lg:mt-[18vw] overflow-hidden relative"
+            className="w-full h-auto md:h-auto lg:h-[80vw] xl:h-[80vw] mt-0 lg:mt-[18vw] relative"
         >
             <div className="w-full h-full overflow-hidden">
                 <motion.img
                     style={{ y }}
-                    className="w-full h-full object-cover scale-[1.22] sm:scale-[1.2] xl:scale-[1.13] origin-top"
+                    className="w-full h-full object-cover scale-125 origin-top"
                     src="/Images/Banner-1-scaled.jpg"
                     alt=""
                 />
             </div>
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[#D6DBE0] text-center w-full pb-[20vw] sm:pb-[15vw] md:pb-[10vw] lg:pb-[5vw]">
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[#D6DBE0] text-center w-full mb-[15vw] sm:mb-[15vw] md:mb-[10vw] lg:mb-[5vw]">
                 <h3 className="text-[10vw] leading-none -tracking-[0.6vw] font-font5 font-bold">
                     Baikal Mockups <br />
                     Collection

@@ -52,30 +52,37 @@ body {
     background-size: cover;
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
-    
+
 }
-.cartMain::-webkit-scrollbar{
+
+.cartMain::-webkit-scrollbar {
     width: 2px;
     background: #C0C5C9;
     border-radius: 100px;
     overflow: hidden;
 }
-.cartMain::-webkit-scrollbar-thumb{
+
+.cartMain::-webkit-scrollbar-thumb {
     width: 100%;
-    background:#000;
+    background: #000;
     border-radius: 100px;
 }
-.cartMain:last-child{
+
+.cartMain:last-child {
     margin-bottom: 0 !important;
 }
-.first-card{
+
+.first-card {
     z-index: 99 !important;
     position: relative !important;
 }
-.center-card{
+
+.center-card {
     z-index: 2 !important;
 }
-.cards{
+
+.cards {
     z-index: 99 !important;
     position: relative !important;
 }
+
