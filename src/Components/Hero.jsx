@@ -93,7 +93,7 @@ const Hero = () => {
     return (
         <div
             ref={mainRef}
-            className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] bg-[#D6DBE0] mt-[75px] lg:mt-[4vw] relative"
+            className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] bg-[#D6DBE0] pt-[80px] lg:pt-[60px] relative z-50"
         >
             <div className="w-full relative z-50">
                 <p className="font-font5 text-[1.8vw] leading-[2vw] capitalize absolute top-[2.3vw] right-[0.5vw] hidden lg:block">

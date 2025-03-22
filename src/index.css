@@ -28,7 +28,7 @@
 }
 
 body {
-    background: #D6DBE0;
+    background: #000;
 }
 
 .SwiperSlideThumb {
@@ -85,4 +85,3 @@ body {
     z-index: 99 !important;
     position: relative !important;
 }
-

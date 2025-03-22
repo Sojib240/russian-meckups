@@ -596,5 +596,3 @@ const Context = (props) => {
     );
 };
 export default Context;
-
-// export const useMyContext = () => useContext(productContext);

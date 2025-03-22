@@ -67,7 +67,7 @@ const MarqueeSection = () => {
     return (
         <div
             ref={marqueeMainRef}
-            className="w-full relative pt-[20vw] lg:pt-[10vw]"
+            className="w-full relative pt-[20vw] lg:pt-[10vw] pb-[18vw] sm:pb-28 md:pb-[14vw] lg:pb-[5vw]"
         >
             <motion.div
                 style={{ y: marqueeResponsive ? y : 0 }}

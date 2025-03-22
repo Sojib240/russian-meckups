@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import AnimatedTitle from "./AnimatedTitle";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import SideCart from "./SideCart";
 import { productContext } from "../../Utils/Context";
 import { CartDataContext } from "../../Utils/CartContext";
@@ -10,6 +10,7 @@ import gsap from "gsap";
 const NavBar = ({ openCart, setopenCart }) => {
     const [mockupsApiData] = useContext(productContext);
     const [cart] = useContext(CartDataContext);
+    const { pathname } = useLocation();
 
     const [menu, setmenu] = useState(false);
     const menuFunction = () => {
@@ -95,10 +96,12 @@ const NavBar = ({ openCart, setopenCart }) => {
             );
         }
     }, [menu]);
+
+    // console.log(location);
     return (
         <>
-            <div className="relative">
-                <nav className="flex justify-between items-center py-4 lg:py-3 px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] bg-[#D6DBE0] border-b w-full fixed top-0 z-[999]">
+            <div className="relative z-[9999]">
+                <nav className="flex justify-between items-center py-4 lg:py-3 px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] bg-[#D6DBE0] border-b w-full fixed top-0 z-[9999]">
                     {/* logo */}
                     <div className="w-full lg:w-[15%]">
                         <Link
@@ -129,30 +132,35 @@ const NavBar = ({ openCart, setopenCart }) => {
                             })}
                     </div>
                     {/* account and cart */}
-                    <div className="flex gap-6 lg:gap-8 w-full lg:w-[15%] items-center justify-end leading-none">
+                    <div className="flex gap-6 lg:gap-8 w-full lg:w-[15%] ml-10 xl:ml-0 items-center justify-end leading-none">
                         <Link to={"/account/"} className="hidden lg:block">
                             <AnimatedTitle text={"account"} />
                         </Link>
-                        <div className="relative">
-                            <span
-                                onClick={() => setopenCart(true)}
-                                className="block cursor-pointer w-[14px]"
-                            >
-                                <img
-                                    className="w-full"
-                                    src="/Images/Icons/cart.svg"
-                                    alt=""
-                                />
-                            </span>
+                        <div className={`relative ${pathname == "/cart/" ? "hidden" : null}`}>
+                            {pathname == "/cart/" ? null : (
+                                <span
+                                    onClick={() => {
+                                        setopenCart(true);
+                                    }}
+                                    className="block cursor-pointer w-[14px]"
+                                >
+                                    <img
+                                        className="w-full"
+                                        src="/Images/Icons/cart.svg"
+                                        alt=""
+                                    />
+                                </span>
+                            )}
+
                             {cart.length != 0 && (
-                                <span className="w-4 h-4 lg:h-[18px] lg:w-[18px] rounded-full bg-black text-white text-[9px] lg:text-[10px] flex items-center justify-center font-font5 absolute top-[-6px] right-[-8px] pointer-events-none">
+                                <span className={`w-4 h-4 lg:h-[18px] lg:w-[18px] rounded-full bg-black text-white text-[9px] lg:text-[10px] flex items-center justify-center font-font5 absolute top-[-6px] right-[-8px] pointer-events-none`}>
                                     {cart.length}
                                 </span>
                             )}
                         </div>
                         <button
                             onClick={() => menuFunction()}
-                            className="h-[20px] sm:h-[25px] flex items-center justify-center cursor-pointer"
+                            className="h-[20px] sm:h-[25px] flex lg:hidden items-center justify-center cursor-pointer"
                         >
                             <div
                                 className={`w-[20px] sm:w-[25px] h-[8px] block lg:hidden  cursor-pointer relative`}

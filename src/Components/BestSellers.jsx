@@ -11,6 +11,7 @@ import { FreeMode } from "swiper/modules";
 import { productContext } from "../Utils/Context";
 import { Link } from "react-router-dom";
 import { CartDataContext } from "../Utils/CartContext";
+import { motion } from "framer-motion";
 
 const BestSellers = ({ openCart, setopenCart }) => {
     const [mockupsApiData] = useContext(productContext);
@@ -31,6 +32,13 @@ const BestSellers = ({ openCart, setopenCart }) => {
     }, [mockupsApiData]);
 
     // product adding to cart
+    const [renderLoadingImg, setrenderLoadingImg] = useState(false);
+    const handleLoadingImg = (isLoading) => {
+        setrenderLoadingImg(isLoading);
+        setTimeout(() => {
+            setrenderLoadingImg(false);
+        }, 1200);
+    };
     const addToCart = (product) => {
         let isActive = false;
         cart.map((cartP) => {
@@ -41,7 +49,9 @@ const BestSellers = ({ openCart, setopenCart }) => {
         if (isActive) {
             return;
         }
-        setcart([...cart, product]);
+        setTimeout(() => {
+            setcart([...cart, product]);
+        }, 1200);
     };
     return (
         <div className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] pt-20 sm:pt-[25vw] md:pt-[12vw]">
@@ -96,7 +106,6 @@ const BestSellers = ({ openCart, setopenCart }) => {
                                         </Link>
                                         <button
                                             onClick={() => {
-                                                setopenCart(true);
                                                 addToCart({
                                                     id,
                                                     image,
@@ -105,12 +114,26 @@ const BestSellers = ({ openCart, setopenCart }) => {
                                                     slug,
                                                     price,
                                                 });
+                                                handleLoadingImg(true);
+                                                setTimeout(() => {
+                                                    setopenCart(true);
+                                                }, 1200);
                                             }}
                                             className="border-t absolute bottom-0 left-0 w-full text-center font-font5 py-2 sm:py-2 md:py-2 lg:py-2 xl:py-2 2xl:py-3 text-[11px] md:text-[12px] lg:text-sm bg-[#D6DBE0] uppercase opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all hover:bg-[#FEE69D] duration-200 cursor-pointer"
                                         >
+                                            {renderLoadingImg && (
+                                                <div className="pl-5 w-9 absolute top-1/2 left-0 -translate-y-1/2">
+                                                    <motion.img initial={{ scale: 0 }}
+                                                    animate={{ scale: 1 }}
+                                                        className="animate-spin w-full"
+                                                        src="/Images/Icons/loading.png"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            )}
                                             <div className="relative inline-block">
-                                            <span>add to cart</span>
-                                            <span className="absolute bottom-0 left-0 w-full h-[1px] bg-black scale-x-0 origin-right transition-transform duration-500 ease-in-out group-hover:scale-x-100 group-hover:origin-left"></span>
+                                                <span>add to cart</span>
+                                                <span className="absolute bottom-0 left-0 w-full h-[1px] bg-black scale-x-0 origin-right transition-transform duration-500 ease-in-out group-hover:scale-x-100 group-hover:origin-left"></span>
                                             </div>
                                         </button>
                                     </div>

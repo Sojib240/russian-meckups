@@ -7,19 +7,26 @@ import Payments from "../Components/Payments";
 import MarqueeSection from "../Components/MarqueeSection";
 import AllCategories from "../Components/AllCategories";
 import Banner from "../Components/Banner";
-const Home = ({openCart, setopenCart}) => {
+import Inner from "../Inner";
+import NavBar from "../Components/Common/NavBar";
+import Information from "./Information";
+const Home = ({ openCart, setopenCart }) => {
     document.title = "Russian Mockups";
 
     return (
-        <div className="bg-[#D6DBE0] min-h-screen z-50 relative">
-            <Hero />
-            <Banner />
-            <BestSellers openCart={openCart} setopenCart={setopenCart} />
-            <AllCategories />
-            <NewOnes openCart={openCart} setopenCart={setopenCart} />
-            <Payments />
-            <MarqueeSection />
-        </div>
+        <Inner>
+            <div className="bg-[#D6DBE0]">
+                <NavBar openCart={openCart} setopenCart={setopenCart} />
+                <Hero />
+                <Banner />
+                <BestSellers openCart={openCart} setopenCart={setopenCart} />
+                <AllCategories />
+                <NewOnes openCart={openCart} setopenCart={setopenCart} />
+                <Payments />
+                <MarqueeSection />
+                {/* <Information openCart={openCart} setopenCart={setopenCart} /> */}
+            </div>
+        </Inner>
     );
 };
 

@@ -93,11 +93,14 @@ const Footer = () => {
 
     return (
         <div className="overflow-hidden">
-            <div className="pt-26 sm:pt-[22vw] md:pt-[10vw] lg:pt-[18vw] xl:pt-[13vw] bg-[#D6DBE0] z-50 relative"></div>
+            {/* pt-26 sm:pt-[22vw] md:pt-[10vw] lg:pt-[18vw] xl:pt-[13vw] */}
+            {/* empty div to create space for the footer */}
+            <div className="bg-[#D6DBE0] z-50 relative"></div>
+            {/* footer top */}
             <div
                 // onLoad={() => handleLoadedFunction()}
                 ref={footerImageRef}
-                className="w-full footer-top pt-8 xl:pt-0 z-50 overflow-hidden relative"
+                className="w-full footer-top pt-8 xl:pt-0 overflow-hidden z-40"
             >
                 <div className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] flex flex-col-reverse md:flex-row items-start justify-between leading-[9vw] pb-8 sm:pb-[7vw] md:pb-0">
                     <h4 className="text-base leading-6 sm:text-[4vw] sm:leading-[4.3vw] md:text-[2vw] font-font5 w-full sm:w-[90%] md:w-[33%] md:leading-[2.4vw] pt-[2vw]">
@@ -108,13 +111,13 @@ const Footer = () => {
                         present authentic
                     </h3>
                 </div>
-                <div className="mt-5 sm:mt-[6vw]">
+                <div className="mt-5 sm:mt-[6vw] z-20">
                     <motion.div
                         style={{
                             y: footerResponsive ? y : 0,
                         }}
                         // ref={footerCardRef}
-                        className="w-[50%] sm:w-[46%] lg:w-[30%] mx-auto z-40 relative mb-16 sm:mb-20 lg:mb-0"
+                        className="w-[50%] sm:w-[46%] lg:w-[30%] mx-auto z-20 mb-16 sm:mb-20 lg:mb-0"
                     >
                         <Link
                             to={`/product-category/all-mockups/`}
@@ -134,17 +137,19 @@ const Footer = () => {
                     </motion.div>
                 </div>
             </div>
+            {/* empty div to create space for the footer */}
             <div
                 ref={footerTopSectionRef}
                 style={{ height: `${height}px` }}
                 className="bg-transparent lg:block hidden"
             ></div>
+            {/* footer bottom */}
             <motion.div
                 style={{ y: footerResponsive ? y2 : 0 }}
                 ref={footerBottomRef}
-                className="w-full lg:fixed lg:bottom-0 footer-bottom py-5 xl:pb-[1vw] px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] z-30"
+                className="w-full lg:fixed lg:bottom-0 footer-bottom py-5 xl:pb-[1vw] px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] z-0 bg-[#D6DBE0] hidden"
             >
-                <div className="flex justify-between flex-col lg:flex-row gap-[2vw] py-[2vw] border-b mb-[1vw]">
+                {/* <div className="flex justify-between flex-col lg:flex-row gap-[2vw] py-[2vw] border-b mb-[1vw]">
                     <div className="w-full lg:w-[40%] lg:pr-8">
                         <div className="uppercase flex flex-col justify-between gap-1 lg:gap-5 font-font5 text-sm max-w-full w-full lg:max-w-[400px]">
                             <div>
@@ -164,9 +169,12 @@ const Footer = () => {
                                     id=""
                                     placeholder="Email for updates"
                                 />
-                                <button className="uppercase px-4 text-sm border-[2px] py-1">
+                                <Link
+                                    to={""}
+                                    className="uppercase px-4 text-sm border-[2px] py-1"
+                                >
                                     subscribe
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -321,16 +329,20 @@ const Footer = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="w-full">
+                </div> */}
+                {/* <div className="w-full">
                     <img
                         onLoad={() => setImageLoaded(true)}
                         className="w-full"
                         src="/Images/Footer-mockup.svg"
                         alt=""
                     />
-                </div>
+                </div> */}
             </motion.div>
+            {/* making in proces */}
+            <div className="text-center bg-[#D6DBE0] text-lg flex items-center justify-center h-[100px] w-full">
+                making in progress
+            </div>
         </div>
     );
 };

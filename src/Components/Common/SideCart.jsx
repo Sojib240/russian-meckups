@@ -20,6 +20,9 @@ const SideCart = ({ openCart, setopenCart }) => {
             setPrice(priceing);
             // console.log(products);
         });
+        if (cart.length == 0) {
+            setPrice(0);
+        }
     };
     useEffect(() => {
         handlePrice();
@@ -29,12 +32,12 @@ const SideCart = ({ openCart, setopenCart }) => {
         <div className="">
             <div
                 onClick={() => setopenCart(false)}
-                className={`w-full h-screen bg-[#0000008c] fixed top-0 left-0 z-[99] duration-500 transition-all ease-in-out ${
+                className={`w-full h-screen bg-[#0000008c] fixed top-0 left-0 z-[99999] duration-500 transition-all ease-in-out ${
                     openCart ? "opacity-100 visible" : "opacity-0 invisible"
                 }`}
             ></div>
             <div
-                className={`w-full sm:w-[600px] h-screen fixed top-0 right-0 z-[999] bg-[#D6DBE0] transition-all ease-in-out duration-500 px-5 origin-right-center sm:px-7 pb-8 flex flex-col ${
+                className={`w-full sm:w-[600px] h-screen fixed top-0 right-0 z-[99999] bg-[#D6DBE0] transition-all ease-in-out duration-500 px-5 origin-right-center sm:px-7 pb-8 flex flex-col ${
                     openCart
                         ? "translate-x-0 scale-x-100 opacity-100"
                         : "translate-x-[100%] opacity-0 scale-x-0"
@@ -123,7 +126,11 @@ const SideCart = ({ openCart, setopenCart }) => {
                         <p>{Price} ₽</p>
                     </div>
                     <div className="flex gap-3 w-full text-white font-font5">
-                        <Link className="py-3 text-center bg-black rounded-[5px] w-full uppercase text-[12px] sm:text-sm">
+                        <Link
+                            onClick={() => setopenCart(false)}
+                            to="/cart/"
+                            className="py-3 text-center bg-black rounded-[5px] w-full uppercase text-[12px] sm:text-sm"
+                        >
                             View cart
                         </Link>
                         <Link className="py-3 text-center bg-black rounded-[5px] w-full uppercase text-[12px] sm:text-sm">
