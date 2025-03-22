@@ -3,6 +3,7 @@ import Inner from "../Inner";
 import NavBar from "../Components/Common/NavBar";
 import { CartDataContext } from "../Utils/CartContext";
 import Footer from "../Components/Common/Footer";
+import { Link } from "react-router-dom";
 
 const CartPage = ({ openCart, setopenCart }) => {
     const [cartPageAccordianOpen, setcartPageAccordianOpen] = useState(false);
@@ -34,9 +35,15 @@ const CartPage = ({ openCart, setopenCart }) => {
             {cart.length == 0 ? (
                 <div className="flex flex-col justify-center items-center pt-28 sm:pt-32 lg:pt-40 pb-16 sm:pb-18 lg:pb-24 bg-[#D6DBE0] relative z-50">
                     <div className="w-[150px] sm:w-[210px] md:w-[250px] lg:w-[350px]">
-                        <img className="w-full" src="/Images/Icons/empty-cart.svg" alt="" />
+                        <img
+                            className="w-full"
+                            src="/Images/Icons/empty-cart.svg"
+                            alt=""
+                        />
                     </div>
-                    <h4 className="font-font5 text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-4 sm:mt-4 md:mt-5 lg:mt-7 capitalize">cart is empty</h4>
+                    <h4 className="font-font5 text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-4 sm:mt-4 md:mt-5 lg:mt-7 capitalize">
+                        cart is empty
+                    </h4>
                 </div>
             ) : (
                 <div className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] min-h-[80vh] bg-[#D6DBE0] pt-[70px] sm:pt-[80px] md:pt-[80px] lg:pt-[100px] relative z-50 flex flex-col lg:flex-row justify-between gap-5 lg:gap-[8vw] pb-[14vw] sm:pb-18 md:pb-[8vw] lg:pb-[6vw]">
@@ -46,20 +53,22 @@ const CartPage = ({ openCart, setopenCart }) => {
                             <h4>Total</h4>
                         </div>
                         <div className="">
-                            {cart.map(({ title, price, image, id }) => {
+                            {cart.map(({ title, price, image, slug, id }) => {
                                 return (
                                     <div
                                         key={id}
                                         className="flex justify-between items-center lg:items-start py-2 sm:py-4 md:py-5 lg:py-7 border-b-none lg:border-b"
                                     >
                                         <div className="flex justify-between items-center gap-5">
-                                            <div className="w-[80px] sm:w-[100px] md:w-[120px]">
-                                                <img
-                                                    className="w-full object-cover"
-                                                    src={image}
-                                                    alt=""
-                                                />
-                                            </div>
+                                            <Link to={`/shop/${slug[1]}/${title}`}>
+                                                <div className="w-[80px] sm:w-[100px] md:w-[120px]">
+                                                    <img
+                                                        className="w-full object-cover"
+                                                        src={image}
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            </Link>
                                             <div className="font-font4">
                                                 <h4 className="text-sm md:text-base">
                                                     {title}
