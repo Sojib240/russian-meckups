@@ -163,7 +163,7 @@ const AllCategories = () => {
             >
                 <div
                     ref={blueRef}
-                    className="w-[300px] h-[320px] absolute top-1/2 left-1/2 -translate-1/2 bg-blue-500 pointer-events-none opacity-0"
+                    className="w-[300px] h-[320px] absolute top-1/2 left-1/2 -translate-1/2 pointer-events-none opacity-0"
                 >
                     <img
                         src={hoveredImage}

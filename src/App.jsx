@@ -104,8 +104,8 @@ const App = () => {
                         }
                     />
                 </Routes>
-            </AnimatePresence>
             <Footer />
+            </AnimatePresence>
         </>
     );
 };
