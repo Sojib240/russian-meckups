@@ -81,7 +81,7 @@ const Account = ({ openCart, setopenCart }) => {
                             <div className="w-full">
                                 <div className="">
                                     <label
-                                        className="block pb-1 font-font5 text-sm"
+                                        className="block pb-1 font-font5 text-[12px] md:text-sm"
                                         htmlFor=""
                                     >
                                         Username or email address *
@@ -95,7 +95,7 @@ const Account = ({ openCart, setopenCart }) => {
                                 </div>
                                 <div className="mt-4">
                                     <label
-                                        className="block pb-1 font-font5 text-sm"
+                                        className="block pb-1 font-font5 text-[12px] md:text-sm"
                                         htmlFor=""
                                     >
                                         Password *
@@ -115,7 +115,7 @@ const Account = ({ openCart, setopenCart }) => {
                                     />
                                     <label
                                         id="inputBox"
-                                        className="font-font5 text-sm"
+                                        className="font-font5 text-[12px] md:text-sm"
                                         htmlFor=""
                                     >
                                         Remember me

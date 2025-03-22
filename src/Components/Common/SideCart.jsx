@@ -32,7 +32,7 @@ const SideCart = ({ openCart, setopenCart }) => {
         <div className="">
             <div
                 onClick={() => setopenCart(false)}
-                className={`w-full h-screen bg-[#0000008c] fixed top-0 left-0 z-[99999] duration-500 transition-all ease-in-out ${
+                className={`w-full h-svh bg-[#0000008c] fixed top-0 left-0 z-[99999] duration-500 transition-all ease-in-out ${
                     openCart ? "opacity-100 visible" : "opacity-0 invisible"
                 }`}
             ></div>
@@ -70,7 +70,7 @@ const SideCart = ({ openCart, setopenCart }) => {
                                                 onClick={() =>
                                                     setopenCart(false)
                                                 }
-                                                to={`/shop/${slug}/${title}/`}
+                                                to={`/shop/${slug[1]}/${title}/`}
                                                 className="block w-[80px]"
                                             >
                                                 <img
@@ -127,13 +127,13 @@ const SideCart = ({ openCart, setopenCart }) => {
                     </div>
                     <div className="flex gap-3 w-full text-white font-font5">
                         <Link
-                            onClick={() => setopenCart(false)}
-                            to="/cart/"
-                            className="py-3 text-center bg-black rounded-[5px] w-full uppercase text-[12px] sm:text-sm"
+                            onClick={() => {cart.length == 0 ? setopenCart(true) : setopenCart(false)}}
+                            to={cart.length == 0 ? "" : "/cart/"}
+                            className={`py-3 text-center bg-black rounded-[5px] w-full uppercase text-[12px] sm:text-sm ${cart.length == 0 ? "cursor-not-allowed" : "cursor-pointer"}`}
                         >
                             View cart
                         </Link>
-                        <Link className="py-3 text-center bg-black rounded-[5px] w-full uppercase text-[12px] sm:text-sm">
+                        <Link className={`py-3 text-center bg-black rounded-[5px] w-full uppercase text-[12px] sm:text-sm ${cart.length == 0 ? "cursor-not-allowed" : "cursor-pointer"}`}>
                             Checkout
                         </Link>
                     </div>
