@@ -22,7 +22,7 @@ const Banner = () => {
     return (
         <div
             ref={bannerRef}
-            className="w-full h-auto md:h-auto lg:h-[80vw] xl:h-[80vw] mt-0 lg:mt-[18vw] relative z-50 bg-[#D6DBE0]"
+            className="w-full h-auto md:h-auto lg:h-[80vw] xl:h-[80vw] relative z-50 bg-[#D6DBE0]"
         >
             <div className="w-full h-full overflow-hidden">
                 <motion.img

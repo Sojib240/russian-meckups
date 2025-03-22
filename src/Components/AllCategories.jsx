@@ -127,33 +127,9 @@ const AllCategories = () => {
             child.addEventListener("mouseleave", handleMouseLeave);
         });
     }, []);
-    // useEffect(() => {
-    //     const textCards = textCardRef.current.querySelectorAll(".card-text");
-    //     textCards.forEach((textCard) => {
-    //         // move
-    //         textCard.addEventListener("mousemove", (e) => {
-    //             const clientx = e.clientX;
-    //             const clienty = e.clientY;
-    //             const top = textCard.getBoundingClientRect().top;
-    //             const left = textCard.getBoundingClientRect().left;
-    //             gsap.set(textCard.querySelector(".card-image"), {
-    //                 ease: "none",
-    //                 left: clientx - left,
-    //                 top: clienty - top,
-    //             });
-    //         });
-    //         // enter
-    //         textCard.addEventListener("mouseenter", () => {
-    //             textCard.querySelector(".card-image").style.display = "block";
-    //         });
-    //         // leave
-    //         textCard.addEventListener("mouseleave", () => {
-    //             textCard.querySelector(".card-image").style.display = "none";
-    //         });
-    //     });
-    // }, []);
+
     return (
-        <div className="w-full px-4 sm:px-[3vw] md:px-[4vw] lg:px-[5vw] pt-10 sm:pt-20 md:pt-[8vw] lg:pt-[4.5vw] overflow-hidden pb-14 sm:pb-[11vw] md:pb-[9vw] lg:pb-[9.5vw]">
+        <div className="w-full px-4 sm:px-[3vw] md:px-[4vw] lg:px-[5vw] pt-10 sm:pt-20 md:pt-[8vw] lg:pt-[4.5vw] overflow-hidden pb-14 sm:pb-[11vw] md:pb-[9vw] lg:pb-[9.5vw] relative z-50 bg-[#D6DBE0]">
             <h4 className="text-6xl sm:text-[10vw] tracking-[-0.6vw] font-font5 text-center">
                 all
             </h4>

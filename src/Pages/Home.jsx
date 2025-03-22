@@ -10,6 +10,7 @@ import Banner from "../Components/Banner";
 import Inner from "../Inner";
 import NavBar from "../Components/Common/NavBar";
 import Information from "./Information";
+import Footer from "../Components/Common/Footer";
 const Home = ({ openCart, setopenCart }) => {
     document.title = "Russian Mockups";
 
@@ -24,6 +25,7 @@ const Home = ({ openCart, setopenCart }) => {
                 <NewOnes openCart={openCart} setopenCart={setopenCart} />
                 <Payments />
                 <MarqueeSection />
+                <Footer /> 
                 {/* <Information openCart={openCart} setopenCart={setopenCart} /> */}
             </div>
         </Inner>

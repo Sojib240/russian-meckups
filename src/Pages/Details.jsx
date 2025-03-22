@@ -16,6 +16,7 @@ import { CartDataContext } from "../Utils/CartContext";
 import { motion } from "framer-motion";
 import Inner from "../Inner";
 import NavBar from "../Components/Common/NavBar";
+import Footer from "../Components/Common/Footer";
 
 const Details = ({ openCart, setopenCart }) => {
     // const { title } = useParams();
@@ -553,6 +554,7 @@ const Details = ({ openCart, setopenCart }) => {
                     </div>
                 </div>
             </div>
+            <Footer /> 
         </Inner>
     );
 };

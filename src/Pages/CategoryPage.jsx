@@ -5,6 +5,7 @@ import { CartDataContext } from "../Utils/CartContext";
 import { motion } from "framer-motion";
 import Inner from "../Inner";
 import NavBar from "../Components/Common/NavBar";
+import Footer from "../Components/Common/Footer";
 
 const CategoryPage = ({ openCart, setopenCart }) => {
     const [cart, setcart] = useContext(CartDataContext);
@@ -143,6 +144,7 @@ const CategoryPage = ({ openCart, setopenCart }) => {
                         )}
                 </div>
             </div>
+            <Footer /> 
         </Inner>
     );
 };

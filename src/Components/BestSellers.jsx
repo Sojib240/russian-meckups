@@ -54,7 +54,7 @@ const BestSellers = ({ openCart, setopenCart }) => {
         }, 1200);
     };
     return (
-        <div className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] pt-20 sm:pt-[25vw] md:pt-[12vw]">
+        <div className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] pt-20 sm:pt-[25vw] md:pt-[12vw] relative z-50 bg-[#D6DBE0]">
             <h2 className="font-font5 text-[10vw] tracking-[-0.6vw] pb-4 sm:pb-[1vw] lg:pb-0">
                 the best sellers
             </h2>

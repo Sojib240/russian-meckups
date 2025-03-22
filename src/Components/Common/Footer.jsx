@@ -1,12 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import AnimatedTitle from "./AnimatedTitle";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-import { motion, useMotionValue, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
     const location = useLocation();
@@ -50,6 +46,8 @@ const Footer = () => {
     });
     const y = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
     const y2 = useTransform(scrollYProgress, [0.5, 1], ["60%", "0%"]);
+    // const opacity = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
+
 
 
     
@@ -102,7 +100,9 @@ const Footer = () => {
             ></div>
             {/* footer bottom */}
             <motion.div
-                style={{ y: footerResponsive ? y2 : 0 }}
+                style={{ y: footerResponsive ? y2 : 0, 
+                    // opacity: footerResponsive ? opacity : 1 
+                }}
                 ref={footerBottomRef}
                 className="w-full lg:fixed lg:bottom-0 py-5 xl:pb-[1vw] px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] z-0 bg-[#D6DBE0]"
             >

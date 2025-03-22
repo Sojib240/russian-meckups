@@ -2,6 +2,7 @@ import gsap from "gsap";
 import React, { useEffect, useRef, useState } from "react";
 import Inner from "../Inner";
 import NavBar from "../Components/Common/NavBar";
+import Footer from "../Components/Common/Footer";
 
 const Account = ({ openCart, setopenCart }) => {
     const [switchRegister, setswitchRegister] = useState(false);
@@ -163,6 +164,7 @@ const Account = ({ openCart, setopenCart }) => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </Inner>
     );
 };

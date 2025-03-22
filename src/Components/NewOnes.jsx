@@ -53,7 +53,7 @@ const NewOnes = ({ openCart, setopenCart }) => {
         }, 1200);
     };
     return (
-        <div className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] mb-20 sm:mb-[18vw]">
+        <div className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] pb-20 sm:pb-[18vw] relative z-50 bg-[#D6DBE0]">
             <h2 className="font-font5 text-[10vw] tracking-[-0.6vw] pb-4 sm:pb-[1vw] lg:pb-0">
                 new ones
             </h2>

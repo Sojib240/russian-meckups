@@ -1,78 +1,16 @@
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-    easeInOut,
     motion,
-    useMotionValue,
     useScroll,
-    useSpring,
     useTransform,
 } from "framer-motion";
 
-// gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
-    // const cardRef = useRef(null);
-    // const lineRef = useRef(null);
     const mainRef = useRef();
-    // let smallScreenTimeline;
-    // let bigScreenTimeline;
-    // useGSAP(() => {
-    //     const cards = cardRef.current.querySelectorAll(".card");
-    //     ScrollTrigger.matchMedia({
-    //         "(min-width:= 1023px)": function () {
-    //           // Kill previous timeline (if it exists) when switching to a new breakpoint
-    //           if (bigScreenTimeline) bigScreenTimeline.kill();
-
-    //           smallScreenTimeline = gsap.timeline({
-    //             scrollTrigger: {
-    //               trigger: cardRef.current,
-    //               start: "top 40%",
-    //               end: "bottom top",
-    //               scrub: true,
-    //             },
-    //           });
-
-    //           smallScreenTimeline.fromTo(
-    //             lineRef.current,
-    //             { rotateX: 70 },
-    //             { rotateX: 0, ease: "none" },
-    //             "a"
-    //           )
-    //           .to([cards[0], cards[2]], { scale: 0.85, ease: "none" }, "a")
-    //           .to(cards[1], { scale: 1.25, ease: "none" }, "a");
-    //         },
-
-    //         "(min-width: 1440px)": function () {
-    //           // Kill previous timeline (if it exists) when switching to a new breakpoint
-    //           if (smallScreenTimeline) smallScreenTimeline.kill();
-
-    //           bigScreenTimeline = gsap.timeline({
-    //             scrollTrigger: {
-    //               trigger: cardRef.current,
-    //               start: "top center",
-    //               end: "bottom top",
-    //               scrub: true,
-    //             //   markers: true,
-    //             },
-    //           });
-
-    //           bigScreenTimeline.fromTo(
-    //             lineRef.current,
-    //             { rotateX: 70 },
-    //             { rotateX: 0, ease: "none" },
-    //             "a"
-    //           )
-    //           .to([cards[0], cards[2]], { scale: 0.85, ease: "none" }, "a")
-    //           .to(cards[1], { scale: 1.25, ease: "none" }, "a");
-    //         },
-    //       });
-    // }, []); // Run once when component mounts
-
-    //
+    
     const [heroResponsive, setheroResponsive] = useState(window.innerWidth >= 1023);
     useEffect(() => {
         window.addEventListener("resize", () => {
@@ -93,7 +31,7 @@ const Hero = () => {
     return (
         <div
             ref={mainRef}
-            className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] bg-[#D6DBE0] pt-[80px] lg:pt-[60px] relative z-50"
+            className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] bg-[#D6DBE0] pt-[80px] lg:pt-[60px] relative z-50  pb-0 lg:pb-[18vw]"
         >
             <div className="w-full relative z-50">
                 <p className="font-font5 text-[1.8vw] leading-[2vw] capitalize absolute top-[2.3vw] right-[0.5vw] hidden lg:block">
@@ -107,17 +45,17 @@ const Hero = () => {
                 />
             </div>
             <div className="relative flex flex-col lg:flex-row">
-                <div className="w-full absolute h-[41vw] overflow-hidden top-0 mt-[1vw] lg:block">
+                <div className="w-full absolute h-[41vw] overflow-hidden top-0 mt-[1vw] lg:block bg-[#D6DBE0]">
                     <motion.img
                         style={{ rotateX: heroResponsive ? rotateX : 0 }}
-                        // ref={lineRef}
+                        
                         className="w-full h-full object-cover rotate-x-[68deg] origin-top"
                         src="/Images/line.svg"
                         alt=""
                     />
                 </div>
                 <div
-                    // ref={cardRef}
+                   
                     className="cards flex items-center justify-between w-full mx-0 lg:mx-[1.5vw] pt-[5vw] md:pt-[0vw] sm:mt-[10px] md:mt-[-25px] lg:mt-[1vw] xl:mt-[-3vw] font-font5 text-[4vw] md:text-[3vw] lg:text-[1.7vw] gap-[1.6vw] z-50 relative lg:z-auto"
                 >
                     {/* top card for mobile */}

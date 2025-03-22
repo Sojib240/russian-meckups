@@ -104,7 +104,7 @@ const Payments = () => {
     const y3 = useTransform(scrollYProgress, [0, 1], ["0", "-20vw"]);
     const rotateX = useTransform(scrollYProgress, [0, 1], [90, 0]);
     return (
-        <div ref={paymentMainRef} className="w-full relative">
+        <div ref={paymentMainRef} className="w-full relative bg-[#D6DBE0] z-50">
             <div
                 // ref={line2Ref}
                 className="w-full h-[70vw] absolute top-0 left-0"

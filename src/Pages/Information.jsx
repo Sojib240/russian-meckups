@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Inner from "../Inner";
 import NavBar from "../Components/Common/NavBar";
+import Footer from "../Components/Common/Footer";
 
 const Information = ({ openCart, setopenCart }) => {
     const [accordianOpen, setaccordianOpen] = useState(0);
@@ -514,6 +515,7 @@ const Information = ({ openCart, setopenCart }) => {
                     </div>
                 </div>
             </div>
+            <Footer /> 
         </Inner>
     );
 };

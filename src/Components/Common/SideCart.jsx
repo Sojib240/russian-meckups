@@ -6,8 +6,8 @@ import { CartDataContext } from "../../Utils/CartContext";
 const SideCart = ({ openCart, setopenCart }) => {
     const [cart, setcart] = useContext(CartDataContext);
     // handle remove
-    const handleRemove = (id) => {
-        const filterForRemove = cart.filter((cartF) => cartF.id !== id);
+    const handleRemove = (title) => {
+        const filterForRemove = cart.filter((cartF) => cartF.title !== title);
         setcart(filterForRemove);
     };
     // handle price
@@ -93,7 +93,7 @@ const SideCart = ({ openCart, setopenCart }) => {
                                                 </p>
                                                 <button
                                                     onClick={() =>
-                                                        handleRemove(id)
+                                                        handleRemove(title)
                                                     }
                                                     className="capitalize font-font4 text-[12px] block cursor-pointer"
                                                 >

@@ -35,8 +35,8 @@ const Inner = ({ children }) => {
     const perspective = {
         initial: {
             y: -100,
-            scale: 0.92,
-            opacity: 0.5,
+            scale: 0.9,
+            opacity: 0.6,
             transition: {
                 duration: 1.1,
                 ease: [0.76, 0, 0.24, 1],
@@ -54,8 +54,8 @@ const Inner = ({ children }) => {
         },
         exit: {
             y: -100,
-            scale: 0.92,
-            opacity: 0.5,
+            scale: 0.9,
+            opacity: 0.6,
             transition: {
                 duration: 1.1,
                 ease: [0.76, 0, 0.24, 1],
@@ -87,7 +87,7 @@ const Inner = ({ children }) => {
                 animate="enter"
                 exit="exit"
             >
-                <motion.div>{children}</motion.div>
+                {children}
             </motion.div>
         </div>
     );
