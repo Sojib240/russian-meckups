@@ -5,6 +5,7 @@ import NavBar from "../Components/Common/NavBar";
 import Footer from "../Components/Common/Footer";
 
 const Information = ({ openCart, setopenCart }) => {
+    document.title = "Information - Russian Мockups";
     const [accordianOpen, setaccordianOpen] = useState(0);
     const handleAccordian = (index) => {
         setaccordianOpen(accordianOpen === index ? 0 : index);

@@ -1,6 +1,5 @@
 import React from "react";
 import Hero from "../Components/Hero";
-import Empty from "../Components/Empty";
 import BestSellers from "../Components/BestSellers";
 import NewOnes from "../Components/NewOnes";
 import Payments from "../Components/Payments";
@@ -9,7 +8,6 @@ import AllCategories from "../Components/AllCategories";
 import Banner from "../Components/Banner";
 import Inner from "../Inner";
 import NavBar from "../Components/Common/NavBar";
-import Information from "./Information";
 import Footer from "../Components/Common/Footer";
 const Home = ({ openCart, setopenCart }) => {
     document.title = "Russian Mockups";
@@ -26,7 +24,6 @@ const Home = ({ openCart, setopenCart }) => {
                 <Payments />
                 <MarqueeSection />
                 <Footer /> 
-                {/* <Information openCart={openCart} setopenCart={setopenCart} /> */}
             </div>
         </Inner>
     );

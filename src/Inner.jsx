@@ -11,7 +11,6 @@ const Inner = ({ children }) => {
             transition: {
                 duration: 1,
                 ease: [0.76, 0, 0.24, 1],
-                // delay: 0.5,
             },
         },
         enter: {
@@ -19,7 +18,7 @@ const Inner = ({ children }) => {
             transition: {
                 duration: 1,
                 ease: [0.76, 0, 0.24, 1],
-                delay: 0.5,
+                delay: 0.6,
             },
         },
         exit: {
@@ -49,7 +48,7 @@ const Inner = ({ children }) => {
             transition: {
                 duration: 1.1,
                 ease: [0.76, 0, 0.24, 1],
-                delay: 0.5,
+                delay: 0.6,
             },
         },
         exit: {

@@ -5,6 +5,7 @@ import NavBar from "../Components/Common/NavBar";
 import Footer from "../Components/Common/Footer";
 
 const Account = ({ openCart, setopenCart }) => {
+    document.title = "Account - Russian Мockups";
     const [switchRegister, setswitchRegister] = useState(false);
     const loginLineRef = useRef();
     const registerLineRef = useRef();

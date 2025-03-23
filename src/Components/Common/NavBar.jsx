@@ -97,7 +97,6 @@ const NavBar = ({ openCart, setopenCart }) => {
         }
     }, [menu]);
 
-    // console.log(location);
     return (
         <>
             <div className="relative z-[9999]">
@@ -136,27 +135,33 @@ const NavBar = ({ openCart, setopenCart }) => {
                         <Link to={"/account/"} className="hidden lg:block">
                             <AnimatedTitle text={"account"} />
                         </Link>
-                        <div className={`relative ${pathname == "/cart/" ? "hidden" : null}`}>
-                            {pathname == "/cart/" ? null : (
-                                <span
-                                    onClick={() => {
-                                        setopenCart(true);
-                                    }}
-                                    className="block cursor-pointer w-[14px]"
-                                >
-                                    <img
-                                        className="w-full"
-                                        src="/Images/Icons/cart.svg"
-                                        alt=""
-                                    />
-                                </span>
-                            )}
+                        <div className={`relative`}>
+                            <Link
+                                to={`${
+                                    pathname == "/checkout/" ? "/cart/" : ""
+                                }`}
+                                onClick={() => {
+                                    {
+                                        pathname == "/checkout/" || pathname == "/cart/" ? setopenCart(false) : setopenCart(true)
+                                    }
+                                    
+                                }}
+                                className="block cursor-pointer w-[14px]"
+                            >
+                                <img
+                                    className="w-full"
+                                    src="/Images/Icons/cart.svg"
+                                    alt=""
+                                />
+                            </Link>
 
-                            {cart.length != 0 && (
-                                <span className={`w-4 h-4 lg:h-[18px] lg:w-[18px] rounded-full bg-black text-white text-[9px] lg:text-[10px] flex items-center justify-center font-font5 absolute top-[-6px] right-[-8px] pointer-events-none`}>
-                                    {cart.length}
-                                </span>
-                            )}
+                            {cart.length != 0 && pathname != "/checkout/" && pathname != "/cart/" ? (
+                                    <span
+                                        className={`w-4 h-4 lg:h-[18px] lg:w-[18px] rounded-full bg-black text-white text-[9px] lg:text-[10px] flex items-center justify-center font-font5 absolute top-[-6px] right-[-8px] pointer-events-none`}
+                                    >
+                                        {cart.length}
+                                    </span>
+                                ) : null}
                         </div>
                         <button
                             onClick={() => menuFunction()}

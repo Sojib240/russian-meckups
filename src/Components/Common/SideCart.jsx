@@ -133,7 +133,10 @@ const SideCart = ({ openCart, setopenCart }) => {
                         >
                             View cart
                         </Link>
-                        <Link className={`py-3 text-center bg-black rounded-[5px] w-full uppercase text-[12px] sm:text-sm ${cart.length == 0 ? "cursor-not-allowed" : "cursor-pointer"}`}>
+                        <Link
+                            onClick={() => {cart.length == 0 ? setopenCart(true) : setopenCart(false)}}
+                            to={cart.length == 0 ? "" : "/checkout/"}
+                        className={`py-3 text-center bg-black rounded-[5px] w-full uppercase text-[12px] sm:text-sm ${cart.length == 0 ? "cursor-not-allowed" : "cursor-pointer"}`}>
                             Checkout
                         </Link>
                     </div>

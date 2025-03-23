@@ -6,6 +6,7 @@ import Footer from "../Components/Common/Footer";
 import { Link } from "react-router-dom";
 
 const CartPage = ({ openCart, setopenCart }) => {
+    document.title = "Cart - Russian Мockups";
     const [cartPageAccordianOpen, setcartPageAccordianOpen] = useState(false);
     const [cart, setcart] = useContext(CartDataContext);
     // handle remove
@@ -161,9 +162,9 @@ const CartPage = ({ openCart, setopenCart }) => {
                                 <h4>Total:</h4>
                                 <h4>{categoryprice} ₽</h4>
                             </div>
-                            <button className="uppercase font-font5 text-[12px] sm:text-sm py-3 sm:py-4 px-5 text-center border-[2px] w-full block bg-[#000] text-white hover:text-[#e7e7e7] border-black transition-all duration-150 cursor-pointer relative group">
+                            <Link to={"/checkout/"} className="uppercase font-font5 text-[12px] sm:text-sm py-3 sm:py-4 px-5 text-center border-[2px] w-full block bg-[#000] text-white hover:text-[#e7e7e7] border-black transition-all duration-150 cursor-pointer relative group">
                                 Proceed to Checkout
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

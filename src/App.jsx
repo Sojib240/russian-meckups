@@ -11,6 +11,7 @@ import CategoryPage from "./Pages/CategoryPage";
 import Account from "./Pages/Account";
 import Information from "./Pages/Information";
 import CartPage from "./Pages/CartPage";
+import CheckOut from "./Pages/CheckOut";
 
 const App = () => {
     const [openCart, setopenCart] = useState(false);
@@ -94,17 +95,22 @@ const App = () => {
                             />
                         }
                     />
-                    <Route
-                        path="/cart/"
-                        element={
-                            <CartPage
-                                openCart={openCart}
-                                setopenCart={setopenCart}
-                            />
-                        }
-                    />
+                        <Route
+                            path="/cart/"
+                            element={
+                                <CartPage
+                                    openCart={openCart}
+                                    setopenCart={setopenCart}
+                                />
+                            }
+                        />
+                        <Route
+                            path="/checkout/"
+                            element={
+                                <CheckOut openCart={openCart} setopenCart={setopenCart} />
+                            }
+                        />
                 </Routes>
-            {/* <Footer /> */}
             </AnimatePresence>
         </>
     );
