@@ -14,65 +14,57 @@ const AllCategories = () => {
         },
         {
             id: 2,
-            image: "/Images/All-catagories/allCatagories-1.jpg",
+            image: "/Images/All-catagories/allCatagories-2.jpg",
             title: "billboards",
             direction: "/product-category/billboards/",
         },
         {
             id: 3,
-            image: "/Images/All-catagories/allCatagories-2.jpg",
+            image: "/Images/All-catagories/allCatagories-3.jpg",
             title: "bus stops",
             direction: "/product-category/bus-stops/",
         },
         {
             id: 4,
-            image: "/Images/All-catagories/allCatagories-3.jpg",
+            image: "/Images/All-catagories/allCatagories-4.jpg",
             title: "facades",
             direction: "/product-category/facades/",
         },
         {
             id: 5,
-            image: "/Images/All-catagories/allCatagories-4.jpg",
+            image: "/Images/All-catagories/allCatagories-5.jpg",
             title: "posters",
             direction: "/product-category/posters/",
         },
         {
             id: 6,
-            image: "/Images/All-catagories/allCatagories-5.jpg",
+            image: "/Images/All-catagories/allCatagories-6.jpg",
             title: "pylons",
             direction: "/product-category/pylons/",
         },
         {
             id: 7,
-            image: "/Images/All-catagories/allCatagories-6.jpg",
+            image: "/Images/All-catagories/allCatagories-7.jpg",
             title: "signs",
             direction: "/product-category/signs/",
         },
     ];
     const textCardRef = useRef();
-    // const cardTextRef = useRef();
     const blueRef = useRef();
     const chieldRef = useRef([]);
-    // const cardHoveredText = textCardRef.current.querySelectorAll(".card-text");
-    // console.log(textCardRef.current.querySelectorAll(".card-text"));
-
-    // console.log(chieldRef);
     var isHovered = false;
     // move
     const handleMouseMoveFunction = (e) => {
-        // textCard.forEach((tCard) => {
         const top = textCardRef.current.getBoundingClientRect().top;
         const left = textCardRef.current.getBoundingClientRect().left;
         const Xposition = e.clientX;
         const Yposition = e.clientY;
         setMousePosition({ x: Xposition, y: Yposition });
-        // console.log(Xposition.x);
         gsap.to(blueRef.current, {
             ease: "power2.out",
             left: Xposition - left,
             top: Yposition - top,
         });
-        // });
     };
     // enter
     const handleEnterFunction = (e) => {
@@ -83,8 +75,6 @@ const AllCategories = () => {
         ); // Find the corresponding data
 
         if (isHovered) {
-            // Log or use the hovered item's data
-            // console.log("Hovered data:", hoveredData.image);
             sethoveredImage(hoveredData.image);
 
             gsap.set(blueRef.current, {
@@ -158,10 +148,10 @@ const AllCategories = () => {
                                 className="relative card-text group pl-0 px-0 sm:px-[3vw] lg:px-[2vw] py-[2vw] xl:py-[1vw]"
                             >
                                 <div className="inline-block relative">
-                                <span className="block z-40 pb-1">
-                                    {title}
-                                </span>
-                                <span className="absolute bottom-0 left-0 w-full h-[1px] bg-black scale-x-0 origin-right transition-transform duration-500 ease-out group-hover:scale-x-100 group-hover:origin-left"></span>
+                                    <span className="block z-40 pb-1">
+                                        {title}
+                                    </span>
+                                    <span className="absolute bottom-0 left-0 w-full h-[1px] bg-black scale-x-0 origin-right transition-transform duration-500 ease-out group-hover:scale-x-100 group-hover:origin-left"></span>
                                 </div>
                             </Link>
                         );
