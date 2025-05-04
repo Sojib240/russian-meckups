@@ -18,7 +18,6 @@ const SideCart = ({ openCart, setopenCart }) => {
         cart.map((product) => {
             priceing += 1 * product.price;
             setPrice(priceing);
-            // console.log(products);
         });
         if (cart.length == 0) {
             setPrice(0);
@@ -53,9 +52,9 @@ const SideCart = ({ openCart, setopenCart }) => {
                     </span>
                 </div>
                 <div
-                    className={`cartMain h-full overflow-x-hidden z-50 ${
+                    className={`cartMain h-full overflow-x-hidden overflow-y-scroll z-[999]  ${
                         cart.length == 0 ? "justify-center" : "justify-start"
-                    } flex flex-col items-center`}
+                    } flex flex-col items-center `}
                 >
                     {!cart.length == 0 ? (
                         cart.map(

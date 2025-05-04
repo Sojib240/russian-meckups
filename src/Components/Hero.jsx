@@ -48,7 +48,6 @@ const Hero = () => {
                 <div className="w-full absolute h-[41vw] overflow-hidden top-0 mt-[1vw] lg:block bg-[#D6DBE0]">
                     <motion.img
                         style={{ rotateX: heroResponsive ? rotateX : 0 }}
-                        
                         className="w-full h-full object-cover rotate-x-[68deg] origin-top"
                         src="/Images/line.svg"
                         alt=""

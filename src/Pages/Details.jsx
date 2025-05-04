@@ -107,7 +107,7 @@ const Details = ({ openCart, setopenCart }) => {
         <Inner>
             <NavBar openCart={openCart} setopenCart={setopenCart} />
             <div className="px-4 sm:px-[3vw] md:px-[2vw] lg:px-[1.5vw] bg-[#D6DBE0] relative z-50 pb-[16vw] sm:pb-22 md:pb-[10vw] lg:pb-[8vw]">
-                <div className="flex flex-col lg:flex-row gap-[2vw] relative">
+                <div className="flex flex-col lg:flex-row items-start gap-[2vw] relative">
                     {/* pc */}
                     {singleProduct &&
                         singleProduct.map(({ id, image, image2 }) => {
@@ -189,7 +189,7 @@ const Details = ({ openCart, setopenCart }) => {
                         })}
 
                     {/*  */}
-                    <div className="w-full lg:w-[36%] 2xl:w-[32%] px-0 lg:px-[1.5vw] min-h-[20vw] h-full sticky top-0  pt-6 lg:pt-[80px]">
+                    <div className="w-full lg:w-[36%] 2xl:w-[32%] px-0 lg:px-[1.5vw] sticky top-0 pt-6 lg:pt-[80px]">
                         {singleProduct &&
                             singleProduct.map(({ id, title }) => {
                                 return (

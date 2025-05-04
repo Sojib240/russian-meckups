@@ -1,0 +1,2 @@
+1.fix the cart scroll (overflow hidden)
+2.position sticky

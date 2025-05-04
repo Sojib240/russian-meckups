@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
 import ScrollToTop from "./Components/Common/ScrollToTop";
+import { useEffect } from "react";
 
 const Inner = ({ children }) => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     // Slide animation for the red overlay
     const slide = {
         initial: {

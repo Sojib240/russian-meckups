@@ -77,6 +77,7 @@ const BestSellers = ({ openCart, setopenCart }) => {
                             spaceBetween: 15,
                         },
                     }}
+                    freeMode={true}
                     modules={[FreeMode]}
                 >
                     {filterProduct.map(
